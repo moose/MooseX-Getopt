@@ -3,18 +3,13 @@
 use strict;
 use warnings;
 
+use Test::More tests => 37;
 use Test::Exception;
-use Test::More;
 use File::Spec;
 
-if ( !eval { require MooseX::ConfigFromFile } )
-{
-    plan skip_all => 'Test requires MooseX::ConfigFromFile';
-}
-else
-{
-    plan tests => 37;
-}
+use Test::Requires {
+    'MooseX::ConfigFromFile' => 0.01, # skip all if not installed
+};
 
 {
     package App;
