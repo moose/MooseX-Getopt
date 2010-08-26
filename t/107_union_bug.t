@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::Most tests => 5;
+use Test::More;
 
 {
     package example;
@@ -49,8 +49,7 @@ use Test::Most tests => 5;
         other   => 'test',
     });
     isa_ok($example, 'example');
-    explain($example->results);
-    cmp_deeply($example->results, [qw(1234 5678 9012)], 'result as expected');
+    is_deeply($example->results, [qw(1234 5678 9012)], 'result as expected');
 }
 
 # With MooseX::Getopt
@@ -59,7 +58,9 @@ use Test::Most tests => 5;
     my $example = example->new_with_options;
     isa_ok($example, 'example');
 
-    explain($example->results);
     is($example->other,'test');
-    cmp_deeply($example->results, [qw(1234 5678 9012)], 'result as expected');
+    is_deeply($example->results, [qw(1234 5678 9012)], 'result as expected');
 }
+
+done_testing;
+
