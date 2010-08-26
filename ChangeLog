@@ -1,5 +1,6 @@
 Revision history for Perl extension MooseX-Getopt
 
+0.32 Thu 26 Aug 2010
   * Fix handling of Union types (RT#58417)
 
 0.31 Wed 7 Jul 2010
