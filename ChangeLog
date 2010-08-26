@@ -1,5 +1,7 @@
 Revision history for Perl extension MooseX-Getopt
 
+  * Fix handling of Union types (RT#58417)
+
 0.31 Wed 7 Jul 2010
   * Fix issue causing tests to fail if MooseX::SimpleConfig isn't installed.
 
