@@ -27,13 +27,12 @@ use Test::Exception;
 
 my $obj = MyClass->new_with_options();
 
-my $expected = <<USAGE;
+my $expected = <<"USAGE";
 usage: 110_sort_usage_by_attr_order.t [-?] [long options...]
-	-? --usage --help  Prints this usage information.
-	--foo              Documentation for "foo"
-	--bar              Documentation for "bar"
-	--baz              Documentation for "baz"
+\t-? --usage --help  Prints this usage information.
+\t--foo              Documentation for "foo"
+\t--bar              Documentation for "bar"
+\t--baz              Documentation for "baz"
 USAGE
 
 is($obj->usage->text, $expected, 'Usage text has nicely sorted options');
-
