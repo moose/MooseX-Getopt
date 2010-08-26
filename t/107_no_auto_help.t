@@ -12,10 +12,9 @@ use warnings;
 
 use Test::More;
 
-BEGIN {
-plan skip_all => 'This test needs MooseX::SimpleConfig 0.07'
-    unless eval { require MooseX::SimpleConfig && MooseX::SimpleConfig->VERSION(0.07); };
-}
+use Test::Requires {
+    'MooseX::SimpleConfig' => 0.07, # skip all if not installed
+};
 
 my $fail_on_exit = 1;
 {
