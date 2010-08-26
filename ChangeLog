@@ -1,5 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
+0.33 Thu 26 Aug 2010
+  * Remove Test::Most from newly added test (RT#60766)
+
 0.32 Thu 26 Aug 2010
   * Fix handling of Union types (RT#58417)
 
