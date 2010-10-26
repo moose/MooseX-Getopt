@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Test::More tests => 10;
-use Test::Exception;
+use Test::Fatal;
 
 BEGIN {
     use_ok('MooseX::Getopt');
@@ -89,12 +89,12 @@ BEGIN {
 {
     local @ARGV = (qw/--private_stuff 317/);
 
-    throws_ok { App->new_with_options } qr/Unknown option: private_stuff/;
+    like exception { App->new_with_options }, qr/Unknown option: private_stuff/;
 }
 
 {
     local @ARGV = (qw/--length 100/);
 
-    throws_ok { App->new_with_options } qr/Unknown option: length/;
+    like exception { App->new_with_options }, qr/Unknown option: length/;
 }
 

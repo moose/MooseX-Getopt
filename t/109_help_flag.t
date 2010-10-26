@@ -18,7 +18,7 @@
 
 use strict; use warnings;
 use Test::More tests => 6;
-use Test::Exception;
+use Test::Fatal;
 
 {
     package MyClass;
@@ -39,7 +39,7 @@ foreach my $args ( ['--help'], ['--usage'], ['--?'], ['-?'] )
 {
     local @ARGV = @$args;
 
-    throws_ok { MyClass->new_with_options() }
+    like exception { MyClass->new_with_options() },
         qr/^usage: (?:[\d\w]+)\Q.t [-?] [long options...]\E.^\t\Q-? --usage --help  Prints this usage information.\E$/ms,
         'Help request detected; usage information properly printed';
 }

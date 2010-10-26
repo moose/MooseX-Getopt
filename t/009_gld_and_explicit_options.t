@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Test::More tests => 5;
-use Test::Exception;
+use Test::Fatal;
 
 use Test::Requires {
     'Getopt::Long::Descriptive' => 0.01, # skip all if not installed
@@ -34,9 +34,9 @@ use_ok('MooseX::Getopt');
 @ARGV = qw(--bar 10);
 
 my $foo;
-lives_ok {
+ok ! exception {
     $foo = Testing::Foo->new_with_options(baz => 100);
-} '... this should work';
+}, '... this should work';
 isa_ok($foo, 'Testing::Foo');
 
 is($foo->bar, 10, '... got the right values');

@@ -4,7 +4,6 @@ use strict;
 use warnings;
 
 use Test::More tests => 5;
-use Test::Exception;
 
 use Test::Requires {
     'Getopt::Long::Descriptive' => 0.01, # skip all if not installed

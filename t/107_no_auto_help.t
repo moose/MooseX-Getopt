@@ -42,7 +42,7 @@ my $fail_on_exit = 1;
 }
 
 use Test::Warn 0.21;
-use Test::Exception;
+use Test::Fatal;
 
 END {
     ok(!$fail_on_exit, 'getoptions() lives');
@@ -57,7 +57,7 @@ END {
 @ARGV = ('--help');
 
 warning_like {
-    throws_ok { Class->new_with_options }
+    like exception { Class->new_with_options },
            #usage: 107_no_auto_help.t [-?] [long options...]
         qr/^usage: [\d\w]+\Q.t [-?] [long options...]\E.\s+\Q-? --usage --help  Prints this usage information.\E.\s+--configfile/ms,
         'usage information looks good';

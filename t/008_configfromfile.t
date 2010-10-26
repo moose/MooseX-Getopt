@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Test::More tests => 37;
-use Test::Exception;
+use Test::Fatal;
 use File::Spec;
 
 use Test::Requires 0.05 {
@@ -86,7 +86,7 @@ use Test::Requires 0.05 {
 {
     local @ARGV = qw( --required_from_argv 1 );
 
-    throws_ok { App->new_with_options } qr/Required option missing: required_from_config/;
+    like exception { App->new_with_options }, qr/Required option missing: required_from_config/;
 
     {
         my $app = App::DefaultConfigFile->new_with_options;
@@ -155,7 +155,7 @@ use Test::Requires 0.05 {
 # Required arg not supplied from cmdline
 {
     local @ARGV = qw( --configfile /notused );
-    throws_ok { App->new_with_options } qr/Required option missing: required_from_argv/;
+    like exception { App->new_with_options }, qr/Required option missing: required_from_argv/;
 }
 
 # Config file value overriden from cmdline
@@ -204,7 +204,7 @@ use Test::Requires 0.05 {
 # With DerivedApp, the Getopt role was applied at a different level
 # than the ConfigFromFile role
 {
-    lives_ok { DerivedApp::Getopt->new_with_options } 'Can create DerivedApp';
+    ok ! exception { DerivedApp::Getopt->new_with_options }, 'Can create DerivedApp';
 }
 
 sub app_ok {

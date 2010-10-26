@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Test::More 0.88;
-use Test::Exception;
+use Test::Fatal;
 
 {
     package MyScript;
@@ -29,13 +29,13 @@ use Test::Exception;
 {
     local $MyScript::usage; local @MyScript::warnings; local @MyScript::exception;
     local @ARGV = ('--help');
-    throws_ok { MyScript->new_with_options } qr/A foo/;
+    like exception { MyScript->new_with_options }, qr/A foo/;
     is $MyScript::usage, 1;
 }
 {
     local $MyScript::usage; local @MyScript::warnings; local @MyScript::exception;
     local @ARGV = ('-q'); # Does not exist
-    throws_ok { MyScript->new_with_options } qr/A foo/;
+    like exception { MyScript->new_with_options }, qr/A foo/;
     is_deeply \@MyScript::warnings, [
           'Unknown option: q
 '

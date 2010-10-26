@@ -1,5 +1,9 @@
 Revision history for Perl extension MooseX-Getopt
 
+NEXT
+  * The test suite now uses Test::Fatal instead of Test::Exception. (Karen
+    Etheridge)
+
 0.33 Thu 26 Aug 2010
   * Remove Test::Most from newly added test (RT#60766)
 

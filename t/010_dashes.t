@@ -3,9 +3,8 @@
 use strict;
 use warnings;
 
-use Test::More tests => 5;
-
-use Test::Exception;
+use Test::More tests => 7;
+use Test::Fatal;
 
 
 BEGIN {
@@ -24,20 +23,20 @@ BEGIN {
 
 {
     local @ARGV = (qw/--some-thingy bar/);
-    lives_and { is( App->new_with_options->some_thingy, 'bar') } 'Dash in option name';
+    ok ! exception { is( App->new_with_options->some_thingy, 'bar') }, 'Dash in option name';
 }
 
 {
     local @ARGV = (qw/--some_thingy bar/);
-    throws_ok { App->new_with_options } qr/Unknown option: some_thingy/;
+    like exception { App->new_with_options }, qr/Unknown option: some_thingy/;
 }
 
 {
     local @ARGV = (qw/--another_thingy bar/);
-    lives_and { is( App->new_with_options->another_thingy, 'bar' ) } 'Underscore in option name';
+    ok ! exception { is( App->new_with_options->another_thingy, 'bar' ) }, 'Underscore in option name';
 }
 
 {
     local @ARGV = (qw/--another-thingy bar/);
-    throws_ok { App->new_with_options } qr/Unknown option: another-thingy/;
+    like exception { App->new_with_options }, qr/Unknown option: another-thingy/;
 }
