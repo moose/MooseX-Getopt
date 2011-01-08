@@ -232,4 +232,12 @@ options (true if any of these options were passed on the command line).
 
 This returns the role meta object.
 
+=method B<process_argv (%params)>
+
+This does most of the work of C<new_with_options>, analyzing the parameters
+and argv, except for actually calling the constructor. It returns a
+L<MooseX::Getopt::ProcessedArgv> object. C<new_with_options> uses this
+method internally, so modifying this method via subclasses/roles will affect
+C<new_with_options>.
+
 =cut
