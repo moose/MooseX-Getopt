@@ -7,6 +7,8 @@ has 'usage'              => (is => 'ro', isa => 'Maybe[Object]');
 has 'constructor_params' => (is => 'ro', isa => 'HashRef');
 has 'cli_params'         => (is => 'ro', isa => 'HashRef');
 
+no Moose;
+
 __PACKAGE__->meta->make_immutable();
 
 1;
