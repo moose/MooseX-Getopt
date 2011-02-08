@@ -277,4 +277,8 @@ doesn't make use of L<Getopt::Long::Descriptive> (or "GLD" for short).
 
 See L<MooseX::Getopt/new_with_options>.
 
+=method process_argv
+
+See L<MooseX::Getopt/process_agv>.
+
 =cut

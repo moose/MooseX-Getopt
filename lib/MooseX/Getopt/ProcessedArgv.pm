@@ -11,14 +11,6 @@ __PACKAGE__->meta->make_immutable();
 
 1;
 
-=pod
-
-=encoding utf-8
-
-=head1 NAME
-
-MooseX::Getopt::ProcessedArgv - contains result of process_argv
-
 =head1 SYNOPSIS
 
   use My::App;
@@ -36,55 +28,26 @@ This object contains the result of a L<MooseX::Getopt/process_argv> call. It
 contains all the information that L<MooseX::Getopt/new_with_options> uses
 when calling new.
 
-=head1 METHODS
-
-=over
-
-=item argv_copy
+=method argv_copy
 
 Reference to a copy of the original C<@ARGV> array as it originally existed
 at the time of C<new_with_options>.
 
-=item extra_arg
+=method extra_arg
 
 Arrayref of leftover C<@ARGV> elements that L<Getopt::Long> did not parse.
 
-=item usage    
+=method usage
 
 Contains the L<Getopt::Long::Descriptive::Usage> object (if
 L<Getopt::Long::Descriptive> is used).
 
-=item constructor_params
+=method constructor_params
 
 Parameters passed to process_argv.
 
-=item cli_param
+=method cli_param
 
 Command-line parameters parsed out of C<@ARGV>.
-
-=back
-
-=head1 AUTHOR
-
-Stevan Little E<lt>stevan@iinteractive.comE<gt>
-
-Brandon L. Black, E<lt>blblack@gmail.comE<gt>
-
-Yuval Kogman, E<lt>nothingmuch@woobling.orgE<gt>
-
-=head1 CONTRIBUTORS
-
-Ryan D Johnson, E<lt>ryan@innerfence.comE<gt>
-
-Drew Taylor, E<lt>drew@drewtaylor.comE<gt>
-
-Tomas Doran, (t0m) C<< <bobtfish@bobtfish.net> >>
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2010 by Infinity Interactive, Inc.
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
 
 =cut
