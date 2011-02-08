@@ -19,20 +19,20 @@ else
 {
     package Testing::Foo;
     use Moose;
-    
+
     with 'MooseX::Getopt';
-    
+
     has 'bar' => (
         is       => 'ro',
-        isa      => 'Int',   
+        isa      => 'Int',
         required => 1,
     );
-    
+
     has 'baz' => (
         is       => 'ro',
-        isa      => 'Int',   
-        required => 1,        
-    );    
+        isa      => 'Int',
+        required => 1,
+    );
 }
 
 @ARGV = qw(--bar 10 file.dat);

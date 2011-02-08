@@ -64,25 +64,23 @@ sub process_argv {
     my $params = $config_from_file ? { %$config_from_file, %{$processed{params}} } : $processed{params};
 
     # did the user request usage information?
-    if ( $processed{usage} and $params->{help_flag} )
-    {
+    if ( $processed{usage} and $params->{help_flag} ) {
         $class->_getopt_full_usage($processed{usage});
     }
 
-    return MooseX::Getopt::ProcessedArgv->new
-        (
+    return MooseX::Getopt::ProcessedArgv->new(
          argv_copy          => $processed{argv_copy},
          extra_argv         => $processed{argv},
          usage              => $processed{usage},
          constructor_params => $constructor_params, # explicit params to ->new
          cli_params         => $params, # params from CLI
-        );
+    );
 }
 
 sub new_with_options {
     my ($class, @params) = @_;
 
-    my $pa = $class->process_argv(@params);    
+    my $pa = $class->process_argv(@params);
 
     $class->new(
         ARGV       => $pa->argv_copy,
@@ -90,7 +88,7 @@ sub new_with_options {
         ( $pa->usage ? ( usage => $pa->usage ) : () ),
         %{ $pa->constructor_params }, # explicit params to ->new
         %{ $pa->cli_params }, # params from CLI
-        );
+    );
 }
 
 sub _getopt_spec { shift->_traditional_spec(@_); }
