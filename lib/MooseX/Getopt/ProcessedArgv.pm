@@ -1,5 +1,6 @@
 package MooseX::Getopt::ProcessedArgv;
 use Moose;
+# ABSTRACT: MooseX::Getopt::ProcessedArgv - Class containing the results of process_argv
 
 has 'argv_copy'          => (is => 'ro', isa => 'ArrayRef');
 has 'extra_argv'         => (is => 'ro', isa => 'ArrayRef');
