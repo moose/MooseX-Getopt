@@ -42,7 +42,7 @@ my $fail_on_exit = 1;
 }
 
 use Test::Warn 0.21;
-use Test::Fatal;
+use Test::Fatal 0.003;
 
 END {
     ok(!$fail_on_exit, 'getoptions() lives');

@@ -7,7 +7,7 @@ use Test::More tests => 37;
 use Test::Fatal;
 use File::Spec;
 
-use Test::Requires 0.05 {
+use Test::Requires {
     'MooseX::ConfigFromFile' => 0.01, # skip all if not installed
 };
 

@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Test::More tests => 9;
-use Test::Fatal;
+use Test::Fatal 0.003;
 
 BEGIN {
     use_ok('MooseX::Getopt');
