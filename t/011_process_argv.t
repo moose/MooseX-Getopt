@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Test::More;
-use Test::Exception;
+use Test::Fatal 0.003;
 
 if ( !eval { require Test::Deep } )
 {
@@ -38,9 +38,13 @@ else
 @ARGV = qw(--bar 10 file.dat);
 
 my $pa;
-lives_ok {
-    $pa = Testing::Foo->process_argv(baz => 100);
-} '... this should work';
+is(
+    exception {
+        $pa = Testing::Foo->process_argv(baz => 100);
+    },
+    undef,
+    '... this should work'
+);
 isa_ok($pa, 'MooseX::Getopt::ProcessedArgv');
 
 Test::Deep::cmp_deeply($pa->argv_copy, [
