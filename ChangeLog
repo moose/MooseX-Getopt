@@ -1,8 +1,14 @@
 Revision history for Perl extension MooseX-Getopt
 
-NEXT
+0.35 Wed 09 Feb 2011
+  * Fix missed change from Test::Exception to Test::Fatal
+
+0.34 Tue 08 Feb 2011
   * The test suite now uses Test::Fatal instead of Test::Exception. (Karen
     Etheridge)
+  * Move most of new_with_options logic into separate publically
+    accessible process_argv method, so that arg processing can be
+    done without actually creating object (Jonathan Swartz)
 
 0.33 Thu 26 Aug 2010
   * Remove Test::Most from newly added test (RT#60766)
