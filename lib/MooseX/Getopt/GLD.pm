@@ -90,6 +90,10 @@ role {
 
   with 'MooseX::Getopt::GLD';
 
+  # or
+
+  with 'MooseX::Getopt::GLD' => { getopt_conf => [ 'pass_through', ... ] };
+
   has 'out' => (is => 'rw', isa => 'Str', required => 1);
   has 'in'  => (is => 'rw', isa => 'Str', required => 1);
 
@@ -105,5 +109,12 @@ role {
 
   ## on the command line
   % perl my_app_script.pl -in file.input -out file.dump
+
+=head1 OPTIONS
+
+This role is a parameterized role. It accepts one configuration parameter,
+C<getopt_conf>. This parameter is an ArrayRef of strings, which are
+L<Getopt::Long> configuraion options (see "Configuring Getopt::Long" in
+L<Getopt::Long>)
 
 =cut
