@@ -1,6 +1,6 @@
 Revision history for Perl extension MooseX-Getopt
 
-{{NEXT}}
+0.36 Tue 29 Mar 2011
   * Fix dist.ini 'Prereq' into 'Prereqs' (Damien Krotkine)
   * MooseX::Getopt::GLD
     - change it to a MooseX::Role::Parameterized, so that it accepts
