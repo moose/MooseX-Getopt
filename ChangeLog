@@ -1,5 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
+{{NEXT}}
+  * Fix dist.ini 'Prereq' into 'Prereqs' (Damien Krotkine)
+
 0.35 Wed 09 Feb 2011
   * Fix missed change from Test::Exception to Test::Fatal
 
