@@ -1,5 +1,6 @@
 Revision history for Perl extension MooseX-Getopt
 
+0.37 Wed 30 Mar 2011
   * Fix missing dependency. (RT#67077)
 
 0.36 Tue 29 Mar 2011
