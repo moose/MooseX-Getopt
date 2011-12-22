@@ -218,6 +218,12 @@ This accessor contains an arrayref of leftover C<@ARGV> elements that
 L<Getopt::Long> did not parse.  Note that the real C<@ARGV> is left
 un-mangled.
 
+B<Important>: By default, L<Getopt::Long> will reject unrecognized arguments
+(that is, arguments that do not correspond with attributes using the Getopt
+trait). To disable this, and allow the population of C<extra_argv>, enable the
+C<pass_through> option of L<Getopt::Long> for your class:  C<use Getopt::Long
+qw(:config pass_through);>
+
 =method B<usage>
 
 This accessor contains the L<Getopt::Long::Descriptive::Usage> object (if
@@ -239,5 +245,13 @@ and argv, except for actually calling the constructor. It returns a
 L<MooseX::Getopt::ProcessedArgv> object. C<new_with_options> uses this
 method internally, so modifying this method via subclasses/roles will affect
 C<new_with_options>.
+
+=head2 More Customization Options
+
+See L<Getopt::Long#Configuring_Getopt::Long> for many other customizations you
+can make to how options are parsed. Simply C<use Getopt::Long qw(:config
+other_options...)> in your class to set these.
+
+=back
 
 =cut
