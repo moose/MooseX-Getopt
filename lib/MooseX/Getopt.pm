@@ -218,9 +218,9 @@ This accessor contains an arrayref of leftover C<@ARGV> elements that
 L<Getopt::Long> did not parse.  Note that the real C<@ARGV> is left
 un-mangled.
 
-B<Important>: By default, L<Getopt::Long> will reject unrecognized arguments
-(that is, arguments that do not correspond with attributes using the Getopt
-trait). To disable this, and allow the population of C<extra_argv>, enable the
+B<Important>: By default, L<Getopt::Long> will reject unrecognized I<options>
+(that is, options that do not correspond with attributes using the Getopt
+trait). To disable this, and allow options to also be saved in C<extra_argv> (for example to pass along to another class's C<new_with_options>), enable the
 C<pass_through> option of L<Getopt::Long> for your class:  C<use Getopt::Long
 qw(:config pass_through);>
 
