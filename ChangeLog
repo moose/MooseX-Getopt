@@ -1,6 +1,6 @@
 Revision history for Perl extension MooseX-Getopt
 
-{{$NEXT}}
+0.38 Fri 23 Dec 2011
   * More documentation on Getopt::Long settings and how they alter this role's
     behaviour, in particular with regards to extra_argv capturing.
     (Karen Etheridge)
