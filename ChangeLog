@@ -1,5 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
+  * Fix argument parseing in process_argv when used with ConfigFromFile so that
+    -v can be used as expected, rather than being grabbed as --version
+
 0.38 Fri 23 Dec 2011
   * More documentation on Getopt::Long settings and how they alter this role's
     behaviour, in particular with regards to extra_argv capturing.
