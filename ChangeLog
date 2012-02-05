@@ -1,5 +1,6 @@
 Revision history for Perl extension MooseX-Getopt
 
+  * Pod fix from debian. Salvatore Bonaccorso <carnil@debian.org> RT#74681
   * Spelling fix from debian. Jonathan Yu <jawnsy@cpan.org> RT#74681
 
 0.39 Fri 03 Feb 2012

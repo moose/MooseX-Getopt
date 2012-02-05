@@ -252,6 +252,5 @@ See L<Getopt::Long#Configuring_Getopt::Long> for many other customizations you
 can make to how options are parsed. Simply C<use Getopt::Long qw(:config
 other_options...)> in your class to set these.
 
-=back
-
 =cut
+
