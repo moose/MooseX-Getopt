@@ -1,5 +1,7 @@
 Revision history for Perl extension MooseX-Getopt
 
+  * Spelling fix from debian. Jonathan Yu <jawnsy@cpan.org> RT#74681
+
 0.39 Fri 03 Feb 2012
   * Fix argument parsing in process_argv when used with ConfigFromFile so that
     -v can be used as expected, rather than being grabbed as --version
