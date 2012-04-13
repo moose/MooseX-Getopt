@@ -1,5 +1,7 @@
 Revision history for Perl extension MooseX-Getopt
 
+  * Fix tests when MooseX::ConfigFromFile is installed, with
+    Getopt::Long::Descriptive >= 0.091. RT#76287
   * Pod fix from debian. Salvatore Bonaccorso <carnil@debian.org> RT#74681
   * Spelling fix from debian. Jonathan Yu <jawnsy@cpan.org> RT#74681
 

@@ -86,7 +86,12 @@ use Test::Requires {
 {
     local @ARGV = qw( --required_from_argv 1 );
 
-    like exception { App->new_with_options }, qr/Required option missing: required_from_config/;
+    if ($Getopt::Long::Descriptive::VERSION >= 0.091) {
+        like exception { App->new_with_options }, qr/Mandatory parameter 'required_from_config' missing/;
+    }
+    else {
+        like exception { App->new_with_options }, qr/Required option missing: required_from_config/;
+    }
 
     {
         my $app = App::DefaultConfigFile->new_with_options;
@@ -155,7 +160,12 @@ use Test::Requires {
 # Required arg not supplied from cmdline
 {
     local @ARGV = qw( --configfile /notused );
-    like exception { App->new_with_options }, qr/Required option missing: required_from_argv/;
+    if ($Getopt::Long::Descriptive::VERSION >= 0.091) {
+        like exception { App->new_with_options }, qr/Mandatory parameter 'required_from_argv' missing/;
+    }
+    else {
+        like exception { App->new_with_options }, qr/Required option missing: required_from_argv/;
+    }
 }
 
 # Config file value overriden from cmdline
