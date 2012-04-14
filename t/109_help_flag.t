@@ -35,17 +35,18 @@ use Test::Fatal;
 #usage: test1.t [-?] [long options...]
 #	-? --usage --help  Prints this usage information.
 
+my $obj = MyClass->new_with_options;
+ok($obj->meta->has_attribute('usage'), 'class has usage attribute');
+isa_ok($obj->usage, 'Getopt::Long::Descriptive::Usage');
+my $usage_text = $obj->usage->text;
+
 foreach my $args ( ['--help'], ['--usage'], ['--?'], ['-?'] )
 {
     local @ARGV = @$args;
 
-    like exception { MyClass->new_with_options() },
-        qr/^usage: (?:[\d\w]+)\Q.t [-?] [long options...]\E.^\t\Q-? --usage --help  Prints this usage information.\E$/ms,
+    is exception { MyClass->new_with_options() },
+        $usage_text,
         'Help request detected; usage information properly printed';
 }
 
-# now call again, and ensure we got the usage info.
-my $obj = MyClass->new_with_options();
-ok($obj->meta->has_attribute('usage'), 'class has usage attribute');
-isa_ok($obj->usage, 'Getopt::Long::Descriptive::Usage');
 
