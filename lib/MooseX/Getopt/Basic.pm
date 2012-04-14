@@ -146,7 +146,8 @@ sub _getopt_spec_exception {
 
 sub _getopt_full_usage {
     my ($self, $usage) = @_;
-    $usage->die;
+    print $usage->text;
+    exit 0;
 }
 
 sub _usage_format {
