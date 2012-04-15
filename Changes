@@ -2,12 +2,12 @@ Revision history for Perl extension MooseX-Getopt
 
  {{$NEXT}}
 
-0.42      2012-04-15 09:13:05 PDT-0700
+0.42-TRIAL 2012-04-15 09:13:05 PDT-0700
  - reformatted the Changes file, with the help of CPAN::Changes, to something
    a little more standard.
  - more release-only tests added
 
-0.41      2012-04-14 18:36:00 PDT-0700
+0.41-TRIAL 2012-04-14 18:36:00 PDT-0700
  - Now bails with exit status 0, rather than dying, when printing
    requested --usage/--help information (usage printed via invalid arguments
    will still die, however). (Karen Etheridge)
