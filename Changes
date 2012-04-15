@@ -1,5 +1,6 @@
 Revision history for Perl extension MooseX-Getopt
 
+ {{$NEXT}}
  - reformatted the Changes file, with the help of CPAN::Changes, to something
    a little more standard.
 
