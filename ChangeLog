@@ -1,6 +1,6 @@
 Revision history for Perl extension MooseX-Getopt
 
-{{$NEXT}}
+0.41      2012-04-14 18:36:00 PDT-0700
   * Now bails with exit status 0, rather than dying, when printing
     --usage/--help information. (Karen Etheridge)
 
