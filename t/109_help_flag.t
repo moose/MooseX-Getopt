@@ -16,9 +16,11 @@
 
 # This inconsistency is the underlying cause of RT#52474, RT#57683, RT#47865.
 
+# Update: since 0.41, usage info is printed to stdout, not stderr.
+
 use strict; use warnings;
-use Test::More tests => 6;
-use Test::Fatal;
+use Test::More tests => 18;
+use Test::Trap;
 
 {
     package MyClass;
@@ -31,21 +33,29 @@ use Test::Fatal;
 #Unknown option: ?
 #usage: test1.t
 
-# after fix, prints this on stderr:
+# after fix, prints this on stdout (formerly stderr):
 #usage: test1.t [-?] [long options...]
 #	-? --usage --help  Prints this usage information.
+
+my $obj = MyClass->new_with_options;
+ok($obj->meta->has_attribute('usage'), 'class has usage attribute');
+isa_ok($obj->usage, 'Getopt::Long::Descriptive::Usage');
+my $usage_text = $obj->usage->text;
 
 foreach my $args ( ['--help'], ['--usage'], ['--?'], ['-?'] )
 {
     local @ARGV = @$args;
+    note "Setting \@ARGV to @$args";
 
-    like exception { MyClass->new_with_options() },
-        qr/^usage: (?:[\d\w]+)\Q.t [-?] [long options...]\E.^\t\Q-? --usage --help  Prints this usage information.\E$/ms,
-        'Help request detected; usage information properly printed';
+    trap { MyClass->new_with_options() };
+
+    is($trap->leaveby, 'exit', 'bailed with an exit code');
+    is($trap->exit, 0, '...of 0');
+    is(
+        $trap->stdout,
+        $usage_text,
+        'Usage information printed to STDOUT',
+    );
+    is($trap->stderr, '', 'there was no STDERR output');
 }
-
-# now call again, and ensure we got the usage info.
-my $obj = MyClass->new_with_options();
-ok($obj->meta->has_attribute('usage'), 'class has usage attribute');
-isa_ok($obj->usage, 'Getopt::Long::Descriptive::Usage');
 

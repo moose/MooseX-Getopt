@@ -1,5 +1,9 @@
 Revision history for Perl extension MooseX-Getopt
 
+{{$NEXT}}
+  * Now bails with exit status 0, rather than dying, when printing
+    --usage/--help information. (Karen Etheridge)
+
 0.40 Fri 13 Apr 2012
   * Fix tests when MooseX::ConfigFromFile is installed, with
     Getopt::Long::Descriptive >= 0.091. RT#76287
