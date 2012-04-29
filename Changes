@@ -1,6 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
  {{$NEXT}}
+
+0.43      2012-04-29 09:35:52 PDT-0700
  - re-release as non-trial.
 
 0.42-TRIAL 2012-04-15 09:13:05 PDT-0700
