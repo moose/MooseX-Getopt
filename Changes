@@ -1,6 +1,7 @@
 Revision history for Perl extension MooseX-Getopt
 
  {{$NEXT}}
+ - re-release as non-trial.
 
 0.42-TRIAL 2012-04-15 09:13:05 PDT-0700
  - reformatted the Changes file, with the help of CPAN::Changes, to something
