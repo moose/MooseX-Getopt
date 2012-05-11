@@ -1,6 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+ - now respecting value of configfile passed to the constructor, when used in
+   conjunction with MooseX::ConfigFromFile. (Karen Etheridge)
 
 0.43      2012-04-29 09:35:52 PDT-0700
  - re-release as non-trial.

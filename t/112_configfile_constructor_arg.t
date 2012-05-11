@@ -19,10 +19,7 @@ use Test::More tests => 2;
     );
 }
 
-TODO:
 {
-    local $TODO = "doh, this doesn't work!";
-
     my $configfile = 't/112_configfile_constructor_arg.yml';
 
     my $obj = Foo->new_with_options(configfile => $configfile);

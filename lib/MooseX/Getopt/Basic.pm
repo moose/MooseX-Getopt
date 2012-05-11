@@ -17,18 +17,28 @@ has extra_argv => (is => 'rw', isa => 'ArrayRef', metaclass => "NoGetopt");
 sub process_argv {
     my ($class, @params) = @_;
 
+    my $constructor_params = ( @params == 1 ? $params[0] : {@params} );
+
     my $config_from_file;
     if($class->meta->does_role('MooseX::ConfigFromFile')) {
         local @ARGV = @ARGV;
 
-        # just get the configfile arg now; the rest of the args will be
-        # fetched later
+        # just get the configfile arg now out of @ARGV; the rest of the args
+        # will be fetched later
         my $configfile;
         my $opt_parser = Getopt::Long::Parser->new( config => [ qw( no_auto_help pass_through no_auto_version ) ] );
         $opt_parser->getoptions( "configfile=s" => \$configfile );
 
+        my $cfmeta = $class->meta->find_attribute_by_name('configfile');
+
+        # was it passed to the constructor?
+        if (!defined $configfile)
+        {
+            my $key = $cfmeta->init_arg;
+            $configfile = $constructor_params->{$key} if $key;
+        }
+
         if(!defined $configfile) {
-            my $cfmeta = $class->meta->find_attribute_by_name('configfile');
             $configfile = $cfmeta->default if $cfmeta->has_default;
             if (ref $configfile eq 'CODE') {
                 # not sure theres a lot you can do with the class and may break some assumptions
@@ -48,8 +58,6 @@ sub process_argv {
             $config_from_file = $class->get_config_from_file($configfile);
         }
     }
-
-    my $constructor_params = ( @params == 1 ? $params[0] : {@params} );
 
     Carp::croak("Single parameters to new_with_options() must be a HASH ref")
         unless ref($constructor_params) eq 'HASH';
