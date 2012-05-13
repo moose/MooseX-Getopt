@@ -7,6 +7,7 @@ use Test::Requires
 # respect the configfile value passed into the constructor.
 
 use Test::More tests => 2;
+use Path::Class;    # exports file, dir
 
 {
     package Foo;
@@ -20,7 +21,7 @@ use Test::More tests => 2;
 }
 
 {
-    my $configfile = 't/112_configfile_constructor_arg.yml';
+    my $configfile = file(qw(t 112_configfile_constructor_arg.yml))->stringify;
 
     my $obj = Foo->new_with_options(configfile => $configfile);
 
