@@ -1,6 +1,7 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+ - re-release to remove double $VERSION declarations
 
 0.46      2012-08-30 15:17:28 PDT-0700
  - -h is also treated as a --help option
