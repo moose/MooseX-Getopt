@@ -202,6 +202,7 @@ B<documentation> option for each attribute to document.
 
   -?
   --?
+  -h
   --help
   --usage
 

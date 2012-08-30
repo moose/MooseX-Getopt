@@ -27,11 +27,11 @@ use Test::More tests => 1;
 my $obj = MyClass->new_with_options();
 
 my $expected = <<"USAGE";
-usage: 110_sort_usage_by_attr_order.t [-?] [long options...]
-\t-? --usage --help  Prints this usage information.
-\t--foo              Documentation for "foo"
-\t--bar              Documentation for "bar"
-\t--baz              Documentation for "baz"
+usage: 110_sort_usage_by_attr_order.t [-?h] [long options...]
+\t-h -? --usage --help  Prints this usage information.
+\t--foo                Documentation for "foo"
+\t--bar                Documentation for "bar"
+\t--baz                Documentation for "baz"
 USAGE
 
 is($obj->usage->text, $expected, 'Usage text has nicely sorted options');

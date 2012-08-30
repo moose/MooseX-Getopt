@@ -19,7 +19,7 @@
 # Update: since 0.41, usage info is printed to stdout, not stderr.
 
 use strict; use warnings;
-use Test::More tests => 18;
+use Test::More tests => 22;
 use Test::Trap;
 
 {
@@ -42,7 +42,7 @@ ok($obj->meta->has_attribute('usage'), 'class has usage attribute');
 isa_ok($obj->usage, 'Getopt::Long::Descriptive::Usage');
 my $usage_text = $obj->usage->text;
 
-foreach my $args ( ['--help'], ['--usage'], ['--?'], ['-?'] )
+foreach my $args ( ['--help'], ['--usage'], ['--?'], ['-?'], ['-h'] )
 {
     local @ARGV = @$args;
     note "Setting \@ARGV to @$args";

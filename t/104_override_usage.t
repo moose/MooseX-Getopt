@@ -42,12 +42,13 @@ use Test::Trap;
           'Unknown option: q
 '
     ];
+    # FIXME - it looks like we have a spacing issue in Getopt::Long?
     my $exp = [
          'Unknown option: q
 ',
-         qq{usage: 104_override_usage.t [-?] [long options...]
-\t-? --usage --help  Prints this usage information.
-\t--foo              A foo
+         qq{usage: 104_override_usage.t [-?h] [long options...]
+\t-h -? --usage --help  Prints this usage information.
+\t--foo                A foo
 }
      ];
 
