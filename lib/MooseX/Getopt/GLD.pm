@@ -22,7 +22,7 @@ role {
         traits => ['NoGetopt'],
     );
 
-    # captures the options: --help --usage --?
+    # captures the options: --help --usage --? -?
     has help_flag => (
         is => 'ro', isa => 'Bool',
         traits => ['Getopt'],

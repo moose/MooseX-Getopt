@@ -200,6 +200,7 @@ information (and the option's state will be stored in the help_flag
 attribute). You can add descriptions for each option by including a
 B<documentation> option for each attribute to document.
 
+  -?
   --?
   --help
   --usage
