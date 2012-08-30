@@ -1,6 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+
+0.47      2012-08-30 16:37:59 PDT-0700
  - re-release to remove double $VERSION declarations
 
 0.46      2012-08-30 15:17:28 PDT-0700
