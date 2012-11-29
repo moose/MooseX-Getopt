@@ -250,7 +250,7 @@ C<new_with_options>.
 
 =head2 More Customization Options
 
-See L<Getopt::Long#Configuring_Getopt::Long> for many other customizations you
+See L<Getopt::Long/Configuring Getopt::Long> for many other customizations you
 can make to how options are parsed. Simply C<use Getopt::Long qw(:config
 other_options...)> in your class to set these.
 

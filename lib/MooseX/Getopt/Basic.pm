@@ -286,6 +286,6 @@ See L<MooseX::Getopt/new_with_options>.
 
 =method process_argv
 
-See L<MooseX::Getopt/process_agv>.
+See L<MooseX::Getopt/process_argv>.
 
 =cut
