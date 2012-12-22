@@ -1,6 +1,7 @@
 use strict;
 use warnings;
-use Test::More;
+
+use Test::More tests => 12;
 use Moose ();
 use Moose::Meta::Class;
 
@@ -32,6 +33,4 @@ foreach my $role (qw/
     ok($meta->name->new_with_options({ argv => ['--debug'] })->Debug,
         "Debug was set for argv --debug on $role");
 }
-
-done_testing;
 

@@ -1,6 +1,7 @@
 use strict;
 use warnings;
-use Test::More 0.88;
+
+use Test::More tests => 8;
 use Test::Trap;
 
 {
@@ -54,6 +55,4 @@ use Test::Trap;
 
      is_deeply \@MyScript::exception, $exp;
 }
-
-done_testing;
 

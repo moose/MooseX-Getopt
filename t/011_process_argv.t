@@ -1,18 +1,9 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 6;
 use Test::Fatal 0.003;
-
-if ( !eval { require Test::Deep } )
-{
-    plan skip_all => 'Test requires Test::Deep';
-    exit;
-}
-else
-{
-    plan tests => 6;
-}
+use Test::Requires 'Test::Deep';
 
 {
     package Testing::Foo;

@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 5;
 
 {
     package example;
@@ -59,6 +59,4 @@ use Test::More;
     is($example->other,'test');
     is_deeply($example->results, [qw(1234 5678 9012)], 'result as expected');
 }
-
-done_testing;
 
