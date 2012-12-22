@@ -6,7 +6,8 @@ use Test::Requires
 
 # respect the configfile value passed into the constructor.
 
-use Test::More tests => 2;
+use Test::More tests => 3;
+use Test::NoWarnings 1.04 ':early';
 use Path::Class;    # exports file, dir
 
 {

@@ -11,10 +11,12 @@
 use strict;
 use warnings;
 
-use Test::More tests => 1;
+use Test::More tests => 2;
+
 use Test::Requires {
     'MooseX::SimpleConfig' => 0.07, # skip all if not installed
 };
+use Test::NoWarnings 1.04 ':early';
 
 my $fail_on_exit = 1;
 {

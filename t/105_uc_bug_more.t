@@ -1,7 +1,8 @@
 use strict;
 use warnings;
 
-use Test::More tests => 12;
+use Test::More tests => 13;
+use Test::NoWarnings 1.04 ':early';
 use Moose ();
 use Moose::Meta::Class;
 

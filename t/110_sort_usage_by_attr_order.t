@@ -9,7 +9,8 @@
 # options added by this class.
 
 use strict; use warnings;
-use Test::More tests => 1;
+use Test::More tests => 2;
+use Test::NoWarnings 1.04 ':early';
 
 {
     package MyClass;

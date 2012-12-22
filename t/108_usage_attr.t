@@ -4,7 +4,8 @@
 # This tests the fix (that fulfills the documentation claim).
 
 use strict; use warnings;
-use Test::More tests => 3;
+use Test::More tests => 4;
+use Test::NoWarnings 1.04 ':early';
 
 {
     package MyClass;

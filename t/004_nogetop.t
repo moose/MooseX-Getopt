@@ -1,8 +1,9 @@
 use strict;
 use warnings;
 
-use Test::More tests => 9;
+use Test::More tests => 10;
 use Test::Fatal 0.003;
+use Test::NoWarnings 1.04 ':early';
 
 BEGIN {
     use_ok('MooseX::Getopt');
