@@ -36,6 +36,14 @@ that a specific attribute should B<not> be processed by
 C<MooseX::Getopt>. All you need to do is specify the C<NoGetopt>
 metaclass.
 
-  has 'foo' => (metaclass => 'NoGetopt', ... );
+  has 'foo' => (metaclass => 'MooseX::Getopt::Meta::Attribute::NoGetopt', ... );
+
+=head2 Custom Metaclass alias
+
+This now takes advantage of the Moose 0.19 feature to support
+custom attribute metaclass. This means you can also
+use this as the B<NoGetopt> alias, like so:
+
+  has 'foo' => (metaclass => 'NoGetopt', cmd_flag => 'f');
 
 =cut

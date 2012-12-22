@@ -24,7 +24,7 @@ sub register_implementation { 'MooseX::Getopt::Meta::Attribute' }
   with 'MooseX::Getopt';
 
   has 'data' => (
-      metaclass => 'MooseX::Getopt::Meta::Attribute',
+      metaclass => ['Getopt'],
       is        => 'ro',
       isa       => 'Str',
       default   => 'file.dat',
