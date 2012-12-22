@@ -222,9 +222,9 @@ un-mangled.
 
 B<Important>: By default, L<Getopt::Long> will reject unrecognized I<options>
 (that is, options that do not correspond with attributes using the Getopt
-trait). To disable this, and allow options to also be saved in C<extra_argv> (for example to pass along to another class's C<new_with_options>), enable the
-C<pass_through> option of L<Getopt::Long> for your class:  C<use Getopt::Long
-qw(:config pass_through);>
+trait). To disable this, and allow options to also be saved in C<extra_argv> (for example to pass along to another class's C<new_with_options>), you can either enable the
+C<pass_through> option of L<Getopt::Long> for your class:  C<< use Getopt::Long
+qw(:config pass_through); >> or specify a value for for L<MooseX::Getopt::GLD>'s C<getopt_conf> parameter.
 
 =method B<usage>
 
