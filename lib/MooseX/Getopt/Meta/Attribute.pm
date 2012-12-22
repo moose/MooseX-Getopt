@@ -52,6 +52,17 @@ which L<MooseX::Getopt> will create for you.
 This is certainly not the prettiest way to go about this, but for
 now it works for those who might need such a feature.
 
+=head2 Use 'traits' instead of 'metaclass'
+
+You should rarely need to explicitly set the attribute metaclass. It is much
+preferred to simply provide a trait (a role applied to the attribute
+metaclass), which allows other code to futher modify the attribute by applying
+additional roles.
+
+Therefore, you should first try to do this:
+
+  has 'foo' => (traits => ['Getopt'], cmd_flag => 'f');
+
 =head2 Custom Metaclass alias
 
 This now takes advantage of the Moose 0.19 feature to support

@@ -17,7 +17,7 @@ use_ok('MooseX::Getopt');
     with 'MooseX::Getopt';
 
     has 'nproc' => (
-        metaclass   => 'Getopt',
+        traits      => ['Getopt'],
         is          => 'ro',
         isa         => 'Int',
         default     => sub { 1 },

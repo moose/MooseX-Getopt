@@ -17,7 +17,6 @@ use_ok('MooseX::Getopt::GLD');
     with 'MooseX::Getopt::GLD' => { getopt_conf => [ 'pass_through' ] };
 
     has 'foo' => (
-        metaclass   => 'Getopt',
         is          => 'ro',
         isa         => 'Int',
     );
@@ -30,7 +29,6 @@ use_ok('MooseX::Getopt::GLD');
     with 'MooseX::Getopt::GLD' => { getopt_conf => [ 'pass_through' ] };;
 
     has 'bar' => (
-        metaclass   => 'Getopt',
         is          => 'ro',
         isa         => 'Int',
     );

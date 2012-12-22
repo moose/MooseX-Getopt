@@ -11,8 +11,8 @@ use Carp ();
 
 use Getopt::Long 2.37 ();
 
-has ARGV       => (is => 'rw', isa => 'ArrayRef', metaclass => "NoGetopt");
-has extra_argv => (is => 'rw', isa => 'ArrayRef', metaclass => "NoGetopt");
+has ARGV       => (is => 'rw', isa => 'ArrayRef', traits => ['NoGetopt']);
+has extra_argv => (is => 'rw', isa => 'ArrayRef', traits => ['NoGetopt']);
 
 sub process_argv {
     my ($class, @params) = @_;

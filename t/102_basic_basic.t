@@ -2,6 +2,7 @@ use strict;
 use warnings;
 
 use Test::More tests => 70;
+use Test::Moose;
 use Test::NoWarnings 1.04 ':early';
 
 BEGIN {
@@ -15,7 +16,7 @@ BEGIN {
     with 'MooseX::Getopt::Basic';
 
     has 'data' => (
-        metaclass => 'MooseX::Getopt::Meta::Attribute',
+        traits    => ['Getopt'],
         is        => 'ro',
         isa       => 'Str',
         default   => 'file.dat',
@@ -23,7 +24,7 @@ BEGIN {
     );
 
     has 'cow' => (
-        metaclass   => 'Getopt',
+        traits      => ['Getopt'],
         is          => 'ro',
         isa         => 'Str',
         default     => 'moo',
@@ -31,7 +32,7 @@ BEGIN {
     );
 
     has 'horse' => (
-        metaclass   => 'MooseX::Getopt::Meta::Attribute',
+        traits      => ['Getopt'],
         is          => 'ro',
         isa         => 'Str',
         default     => 'bray',
@@ -69,7 +70,7 @@ BEGIN {
     );
 
     has '_private_stuff_cmdline' => (
-        metaclass => 'MooseX::Getopt::Meta::Attribute',
+        traits      => ['Getopt'],
         is        => 'ro',
         isa       => 'Int',
         default   => 832,
@@ -81,7 +82,7 @@ BEGIN {
 foreach my $attr_name (qw(data cow horse _private_stuff_cmdline)) {
     my $attr = App->meta->get_attribute($attr_name);
     isa_ok($attr, 'Moose::Meta::Attribute');
-    isa_ok($attr, 'MooseX::Getopt::Meta::Attribute');
+    does_ok($attr, 'MooseX::Getopt::Meta::Attribute::Trait');
     can_ok($attr, 'cmd_flag');
     can_ok($attr, 'cmd_aliases');
 }

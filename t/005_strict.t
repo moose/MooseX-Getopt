@@ -17,7 +17,7 @@ BEGIN {
     with 'MooseX::Getopt::Strict';
 
     has 'data' => (
-        metaclass => 'Getopt',
+        traits    => ['Getopt'],
         is        => 'ro',
         isa       => 'Str',
         default   => 'file.dat',
@@ -25,7 +25,7 @@ BEGIN {
     );
 
     has 'cow' => (
-        metaclass   => 'Getopt',
+        traits      => ['Getopt'],
         is          => 'ro',
         isa         => 'Str',
         default     => 'moo',

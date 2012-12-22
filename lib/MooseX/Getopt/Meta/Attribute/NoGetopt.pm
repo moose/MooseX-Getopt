@@ -38,6 +38,17 @@ metaclass.
 
   has 'foo' => (metaclass => 'MooseX::Getopt::Meta::Attribute::NoGetopt', ... );
 
+=head2 Use 'traits' instead of 'metaclass'
+
+You should rarely need to explicitly set the attribute metaclass. It is much
+preferred to simply provide a trait (a role applied to the attribute
+metaclass), which allows other code to futher modify the attribute by applying
+additional roles.
+
+Therefore, you should first try to do this:
+
+  has 'foo' => (traits => ['NoGetopt', ...], ...);
+
 =head2 Custom Metaclass alias
 
 This now takes advantage of the Moose 0.19 feature to support
