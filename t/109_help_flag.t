@@ -1,5 +1,3 @@
-#!/usr/bin/env perl
-
 # The documentation claims:
 #   If Getopt::Long::Descriptive is installed and any of the following command
 #   line params are passed (--help, --usage, --?), the program will exit with

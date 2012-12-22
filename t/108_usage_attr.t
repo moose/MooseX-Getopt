@@ -1,5 +1,3 @@
-#!/usr/bin/env perl
-
 # Re RT#58715 and the claim in the documentation:
 #   If you have Getopt::Long::Descriptive the usage param is also passed to new.
 
