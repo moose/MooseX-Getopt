@@ -76,7 +76,6 @@ BEGIN {
         default   => 832,
         cmd_flag  => 'p',
     );
-
 }
 
 foreach my $attr_name (qw(data cow horse _private_stuff_cmdline)) {

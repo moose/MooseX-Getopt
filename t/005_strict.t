@@ -10,7 +10,6 @@ BEGIN {
 }
 
 {
-
     package App;
     use Moose;
 

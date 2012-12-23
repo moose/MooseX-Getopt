@@ -30,7 +30,6 @@ BEGIN {
         isa     => 'ArrayOfInts',
         default => sub { [0] }
     );
-
 }
 
 {
