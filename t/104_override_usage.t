@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 9;
+use Test::More tests => 5;
 use Test::Trap;
 use Test::NoWarnings 1.04 ':early';
 
@@ -12,48 +12,31 @@ use Test::NoWarnings 1.04 ':early';
     with 'MooseX::Getopt';
 
     has foo => ( isa => 'Int', is => 'ro', documentation => 'A foo' );
+}
 
-    our $usage = 0;
-    before _getopt_full_usage => sub { $usage++; };
-    our @warnings;
-    before _getopt_spec_warnings => sub { shift; push(@warnings, @_) };
-    our @exception;
-    before _getopt_spec_exception => sub { shift; push(@exception, @{ shift() }, shift()) };
-}
-{
-    local $MyScript::usage; local @MyScript::warnings; local @MyScript::exception;
-    local @ARGV = ('--foo', '1');
-    my $i = MyScript->new_with_options;
-    ok $i;
-    is $i->foo, 1;
-    is $MyScript::usage, undef;
-}
-{
-    local $MyScript::usage; local @MyScript::warnings; local @MyScript::exception;
-    local @ARGV = ('--help');
-    trap { MyScript->new_with_options };
-    like($trap->stdout, qr/A foo/);
-    is $MyScript::usage, 1;
-}
-{
-    local $MyScript::usage; local @MyScript::warnings; local @MyScript::exception;
-    local @ARGV = ('-q'); # Does not exist
-    trap { MyScript->new_with_options };
-    like($trap->die, qr/A foo/);
-    is_deeply \@MyScript::warnings, [
-          'Unknown option: q
-'
-    ];
-    # FIXME - it looks like we have a spacing issue in Getopt::Long?
-    my $exp = [
-         'Unknown option: q
-',
-         qq{usage: 104_override_usage.t [-?h] [long options...]
+# FIXME - it looks like we have a spacing issue in Getopt::Long?
+my $usage = <<USAGE;
+usage: 104_override_usage.t [-?h] [long options...]
 \t-h -? --usage --help  Prints this usage information.
 \t--foo                A foo
-}
-     ];
+USAGE
 
-     is_deeply \@MyScript::exception, $exp;
+{
+    local @ARGV = ('--foo', '1');
+    my $i = trap { MyScript->new_with_options };
+    is($i->foo, 1, 'attr is set');
+    is($trap->stdout, '', 'nothing printed when option is accepted');
+}
+
+{
+    local @ARGV = ('--help');
+    trap { MyScript->new_with_options };
+    is($trap->stdout, $usage, 'usage is printed on --help');
+}
+
+{
+    local @ARGV = ('-q'); # Does not exist
+    trap { MyScript->new_with_options };
+    is($trap->die, join("\n", 'Unknown option: q', $usage), 'usage is printed on unknown option');
 }
 
