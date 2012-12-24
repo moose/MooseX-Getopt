@@ -3,6 +3,8 @@ Revision history for Perl extension MooseX-Getopt
 {{$NEXT}}
  - documentation and tests amended to prefer usage of 'trait' over 'metaclass'
    as much as possible
+ - print_usage_text() exposed as a public method, to make it easier for
+   consuming classes to modify the behaviour when usage text is printed
 
 0.47      2012-08-30 16:37:59 PDT-0700
  - re-release to remove double $VERSION declarations

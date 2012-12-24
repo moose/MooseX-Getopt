@@ -49,7 +49,7 @@ use Test::Fatal 0.003;
 END {
     ok(!$fail_on_exit, 'getoptions() lives');
 
-    # cancel the non-zero exit status from _getopt_full_usage()
+    # cancel the non-zero exit status from print_usage_text()
     exit 0;
 }
 

@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 5;
+use Test::More tests => 6;
 use Test::Trap;
 use Test::NoWarnings 1.04 ':early';
 
@@ -38,5 +38,21 @@ USAGE
     local @ARGV = ('-q'); # Does not exist
     trap { MyScript->new_with_options };
     is($trap->die, join("\n", 'Unknown option: q', $usage), 'usage is printed on unknown option');
+}
+
+{
+    Class::MOP::class_of('MyScript')->add_before_method_modifier(
+        print_usage_text => sub {
+            print "--- DOCUMENTATION ---\n";
+        },
+    );
+
+    local @ARGV = ('--help');
+    trap { MyScript->new_with_options };
+    is(
+        $trap->stdout,
+        join("\n", '--- DOCUMENTATION ---', $usage),
+        'additional text included before normal usage string',
+    );
 }
 
