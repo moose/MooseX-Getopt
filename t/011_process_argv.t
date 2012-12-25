@@ -1,9 +1,10 @@
 use strict;
 use warnings;
 
-use Test::More tests => 6;
+use Test::More tests => 7;
 use Test::Fatal 0.003;
 use Test::Requires 'Test::Deep';
+use Test::NoWarnings 1.04 ':early';
 
 {
     package Testing::Foo;
