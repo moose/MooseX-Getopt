@@ -6,9 +6,7 @@ use Test::Fatal;
 use File::Spec;
 use Test::NoWarnings 1.04 ':early';
 
-use Test::Requires {
-    'MooseX::ConfigFromFile' => 0.01, # skip all if not installed
-};
+use Test::Requires 'MooseX::ConfigFromFile';
 
 {
     package App;
