@@ -5,7 +5,7 @@ use Test::More tests => 6;
 use Test::Fatal;
 use Test::NoWarnings 1.04 ':early';
 
-use Test::Requires 'Getopt::Long::Descriptive';
+use Getopt::Long::Descriptive;
 
 use_ok('MooseX::Getopt');
 
