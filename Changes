@@ -1,6 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+
+0.49      2012-12-26 10:13:41 PST-0800
  - silence a warning in tests if the user does not have YAML::XS installed
    (thanks for the report, Getty!)
  - fix off-by-one issues in test plans if optional requirements are not met
