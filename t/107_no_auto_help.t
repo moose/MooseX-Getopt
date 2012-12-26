@@ -11,11 +11,11 @@
 use strict;
 use warnings;
 
+use Test::Requires { 'MooseX::SimpleConfig' => 0.07 };  # skip all if not installed
 use Test::More tests => 2;
+use Test::Warn 0.21;
+use Test::Fatal 0.003;
 
-use Test::Requires {
-    'MooseX::SimpleConfig' => 0.07, # skip all if not installed
-};
 use Test::NoWarnings 1.04 ':early';
 
 my $fail_on_exit = 1;
@@ -42,9 +42,6 @@ my $fail_on_exit = 1;
     no Moose;
     1;
 }
-
-use Test::Warn 0.21;
-use Test::Fatal 0.003;
 
 END {
     ok(!$fail_on_exit, 'getoptions() lives');

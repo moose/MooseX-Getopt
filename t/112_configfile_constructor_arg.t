@@ -1,11 +1,9 @@
 use strict;
 use warnings;
 
-use Test::Requires
-    'MooseX::SimpleConfig'; # skip all if not installed
-
 # respect the configfile value passed into the constructor.
 
+use Test::Requires 'MooseX::SimpleConfig';  # skip all if not installed
 use Test::More tests => 3;
 use Test::NoWarnings 1.04 ':early';
 use Path::Class;    # exports file, dir

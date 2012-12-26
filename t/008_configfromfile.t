@@ -1,12 +1,11 @@
 use strict;
 use warnings;
 
+use Test::Requires 'MooseX::ConfigFromFile';    # skip all if not installed
 use Test::More tests => 38;
 use Test::Fatal;
 use File::Spec;
 use Test::NoWarnings 1.04 ':early';
-
-use Test::Requires 'MooseX::ConfigFromFile';
 
 {
     package App;
