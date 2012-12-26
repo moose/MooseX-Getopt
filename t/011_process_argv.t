@@ -3,7 +3,6 @@ use warnings;
 
 use Test::More tests => 7;
 use Test::Fatal 0.003;
-use Test::Requires 'Test::Deep';
 use Test::NoWarnings 1.04 ':early';
 
 {
@@ -37,17 +36,17 @@ is(
 );
 isa_ok($pa, 'MooseX::Getopt::ProcessedArgv');
 
-cmp_deeply($pa->argv_copy, [
+is_deeply($pa->argv_copy, [
     '--bar',
     '10',
     'file.dat'
 ], 'argv_copy');
-cmp_deeply($pa->cli_params, {
+is_deeply($pa->cli_params, {
     'bar' => 10
 }, 'cli_params');
-cmp_deeply($pa->constructor_params, {
+is_deeply($pa->constructor_params, {
     'baz' => 100
 }, 'constructor_params');
-cmp_deeply($pa->extra_argv, [
+is_deeply($pa->extra_argv, [
     'file.dat'
 ], 'extra_argv');
