@@ -1,6 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+
+0.50      2012-12-27 00:20:56 PST-0800
  - unbreak Catalyst::Runtime tests (etc) by keeping _getopt_full_usage in the
    callstack. (RT#82249)
 
