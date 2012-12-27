@@ -1,6 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+ - unbreak Catalyst::Runtime tests (etc) by keeping _getopt_full_usage in the
+   callstack. (RT#82249)
 
 0.49      2012-12-26 10:13:41 PST-0800
  - silence a warning in tests if the user does not have YAML::XS installed

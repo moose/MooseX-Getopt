@@ -152,17 +152,18 @@ sub _getopt_spec_exception {
     die @$warnings, $exception;
 }
 
-#(this is already documented in MooseX::Getopt. But FIXME later, via RT#82195)
-=for Pod::Coverage
-    print_usage_text
-=cut
-sub print_usage_text {
+# maintained for backwards compatibility only
+sub _getopt_full_usage
+{
     my ($self, $usage) = @_;
     print $usage->text;
     exit 0;
 }
-# maintained for backwards compatibility only
-sub _getopt_full_usage { shift->print_usage_text(@_) }
+#(this is already documented in MooseX::Getopt. But FIXME later, via RT#82195)
+=for Pod::Coverage
+    print_usage_text
+=cut
+sub print_usage_text { shift->_getopt_full_usage(@_) }
 
 sub _usage_format {
     return "usage: %c %o";

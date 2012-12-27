@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 6;
+use Test::More tests => 7;
 use Test::Trap;
 use Test::NoWarnings 1.04 ':early';
 
@@ -49,6 +49,33 @@ USAGE
 
     local @ARGV = ('--help');
     trap { MyScript->new_with_options };
+    is(
+        $trap->stdout,
+        join("\n", '--- DOCUMENTATION ---', $usage),
+        'additional text included before normal usage string',
+    );
+}
+
+{
+    package MyScript2;
+    use Moose;
+
+    with 'MooseX::Getopt';
+    has foo => ( isa => 'Int', is => 'ro', documentation => 'A foo' );
+}
+
+{
+    # some classes (e.g. ether's darkpan and Catalyst::Runtime) overrode
+    # _getopt_full_usage, so we need to keep it in the call stack so we don't
+    # break them.
+    Class::MOP::class_of('MyScript2')->add_before_method_modifier(
+        _getopt_full_usage => sub {
+            print "--- DOCUMENTATION ---\n";
+        },
+    );
+
+    local @ARGV = ('--help');
+    trap { MyScript2->new_with_options };
     is(
         $trap->stdout,
         join("\n", '--- DOCUMENTATION ---', $usage),
