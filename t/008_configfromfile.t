@@ -1,10 +1,10 @@
 use strict;
 use warnings;
 
-use Test::Requires 'MooseX::ConfigFromFile';    # skip all if not installed
+use Test::Requires 'MooseX::ConfigFromFile' => '0.06';    # skip all if not installed
 use Test::More tests => 38;
 use Test::Fatal;
-use File::Spec;
+use Path::Tiny;
 use Test::NoWarnings 1.04 ':early';
 
 {
@@ -47,7 +47,7 @@ use Test::NoWarnings 1.04 ':early';
             optional_from_config => 'from_config_2',
         );
 
-        my $cpath = File::Spec->canonpath('/notused/default');
+        my $cpath = Path::Tiny::path('/notused/default');
         if ( $file ne $cpath ) {
             $config{config_from_override} = 1;
         }
@@ -63,7 +63,7 @@ use Test::NoWarnings 1.04 ':early';
     extends 'App';
 
     has '+configfile' => (
-        default => File::Spec->canonpath('/notused/default'),
+        default => Path::Tiny::path('/notused/default')->stringify,
     );
 }
 
@@ -74,7 +74,7 @@ use Test::NoWarnings 1.04 ':early';
     extends 'App';
 
     has '+configfile' => (
-        default => sub { return File::Spec->canonpath('/notused/default') },
+        default => sub { return Path::Tiny::path('/notused/default') },
     );
 }
 
@@ -95,7 +95,7 @@ use Test::NoWarnings 1.04 ':early';
         ok(  !$app->config_from_override,
             '... config_from_override false as expected' );
 
-        is( $app->configfile, File::Spec->canonpath('/notused/default'),
+        is( $app->configfile, path('/notused/default'),
             '... configfile is /notused/default as expected' );
     }
 }
@@ -112,7 +112,7 @@ use Test::NoWarnings 1.04 ':early';
         ok(  !$app->config_from_override,
             '... config_from_override false as expected' );
 
-        is( $app->configfile, File::Spec->canonpath('/notused/default'),
+        is( $app->configfile, path('/notused/default'),
             '... configfile is /notused/default as expected' );
     }
 }
@@ -135,7 +135,7 @@ use Test::NoWarnings 1.04 ':early';
         ok( $app->config_from_override,
              '... config_from_override true as expected' );
 
-        is( $app->configfile, File::Spec->canonpath('/notused'),
+        is( $app->configfile, path('/notused'),
             '... configfile is /notused as expected' );
     }
     {
@@ -146,7 +146,7 @@ use Test::NoWarnings 1.04 ':early';
         ok( $app->config_from_override,
              '... config_from_override true as expected' );
 
-        is( $app->configfile, File::Spec->canonpath('/notused'),
+        is( $app->configfile, path('/notused'),
             '... configfile is /notused as expected' );
     }
 }

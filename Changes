@@ -1,6 +1,7 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+ - tests converted from using Path::Class to Path::Tiny
 
 0.51      2013-01-27 09:38:11 PST-0800
  - missing test prereqs now declared (thanks for the automated reports, David
