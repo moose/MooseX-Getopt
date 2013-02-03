@@ -1,6 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+
+0.52      2013-02-02 19:01:25 PST-0800
  - tests converted from using Path::Class to Path::Tiny
 
 0.51      2013-01-27 09:38:11 PST-0800
