@@ -98,11 +98,6 @@ use Test::NoWarnings 1.04 ':early';
         is( $app->configfile, path('/notused/default'),
             '... configfile is /notused/default as expected' );
     }
-}
-
-# No config specified
-{
-    local @ARGV = qw( --required_from_argv 1 );
 
     {
         my $app = App::DefaultConfigFileCodeRef->new_with_options;
