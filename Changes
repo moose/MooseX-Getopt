@@ -1,6 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+
+0.53      2013-02-05 09:59:00 PST-0800
  - properly indicate optional dependency in tests using
    MooseX::ConfigFromFile
 
