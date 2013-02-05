@@ -114,7 +114,7 @@ role {
 
 This role is a parameterized role. It accepts one configuration parameter,
 C<getopt_conf>. This parameter is an ArrayRef of strings, which are
-L<Getopt::Long> configuraion options (see "Configuring Getopt::Long" in
+L<Getopt::Long> configuration options (see "Configuring Getopt::Long" in
 L<Getopt::Long>)
 
 =cut
