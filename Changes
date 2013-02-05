@@ -1,6 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+ - properly indicate optional dependency in tests using
+   MooseX::ConfigFromFile
 
 0.52      2013-02-02 19:01:25 PST-0800
  - tests converted from using Path::Class to Path::Tiny

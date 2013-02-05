@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::Requires 'MooseX::ConfigFromFile' => '0.06';    # skip all if not installed
+use Test::Requires { 'MooseX::ConfigFromFile' => '0.06' };    # skip all if not installed
 use Test::More tests => 38;
 use Test::Fatal;
 use Path::Tiny;
