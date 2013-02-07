@@ -31,7 +31,7 @@ $Config::Any::YAML::NO_YAML_XS_WARNING = 1;
     my $obj = Foo->new_with_options(configfile => $configfile);
 
     is(
-        $obj->configfile,
+        path($obj->configfile),
         $configfile,
         'configfile value is used from the constructor',
     );
