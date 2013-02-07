@@ -40,7 +40,12 @@ sub process_argv {
         }
 
         if(!defined $configfile) {
-            $configfile = $cfmeta->default if $cfmeta->has_default;
+            # this is a classic legacy usecase documented in
+            # MooseX::ConfigFromFile that we should continue to support
+            $configfile = try { $class->configfile };
+
+            $configfile = $cfmeta->default
+                if not defined $configfile and $cfmeta->has_default;
             if (ref $configfile eq 'CODE') {
                 # not sure theres a lot you can do with the class and may break some assumptions
                 # warn?

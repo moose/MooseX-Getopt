@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use Test::Requires { 'MooseX::ConfigFromFile' => '0.06' };    # skip all if not installed
-use Test::More tests => 38;
+use Test::More tests => 50;
 use Test::Fatal;
 use Path::Tiny;
 use Test::NoWarnings 1.04 ':early';
@@ -77,6 +77,16 @@ use Test::NoWarnings 1.04 ':early';
     );
 }
 
+{
+    package App::ConfigFileWrapped;
+
+    use Moose;
+    extends 'App';
+
+    around configfile => sub { '/notused/default' };
+}
+
+
 # No config specified
 {
     local @ARGV = qw( --required_from_argv 1 );
@@ -101,6 +111,18 @@ use Test::NoWarnings 1.04 ':early';
     {
         my $app = App::DefaultConfigFileCodeRef->new_with_options;
         isa_ok( $app, 'App::DefaultConfigFileCodeRef' );
+        app_ok( $app );
+
+        ok(  !$app->config_from_override,
+            '... config_from_override false as expected' );
+
+        is( $app->configfile, path('/notused/default'),
+            '... configfile is /notused/default as expected' );
+    }
+
+    {
+        my $app = App::ConfigFileWrapped->new_with_options;
+        isa_ok( $app, 'App::ConfigFileWrapped' );
         app_ok( $app );
 
         ok(  !$app->config_from_override,
@@ -140,7 +162,22 @@ use Test::NoWarnings 1.04 ':early';
         ok( $app->config_from_override,
              '... config_from_override true as expected' );
 
-        is( $app->configfile, path('/notused'),
+        is( $app->configfile, path('/notused/override'),
+            '... configfile is /notused/override as expected' );
+    }
+    TODO: {
+        my $app = App::ConfigFileWrapped->new_with_options;
+        isa_ok( $app, 'App::ConfigFileWrapped' );
+        app_ok( $app );
+
+        ok( $app->config_from_override,
+             '... config_from_override true as expected' );
+
+# FIXME - in order for this to work, we need to fix CFF so the
+# configfile method always returns the actual value of the attribute,
+# not the default sub thingy.
+        local $TODO = 'MooseX::ConfigFromFile needs fixes';
+        is( $app->configfile, path('/notused/override'),
             '... configfile is /notused as expected' );
     }
 }
