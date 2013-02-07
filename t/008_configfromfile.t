@@ -114,7 +114,7 @@ use Test::NoWarnings 1.04 ':early';
 
 # Config specified
 {
-    local @ARGV = qw( --configfile /notused --required_from_argv 1 );
+    local @ARGV = qw( --configfile /notused/override --required_from_argv 1 );
 
     {
         my $app = App->new_with_options;
@@ -130,8 +130,8 @@ use Test::NoWarnings 1.04 ':early';
         ok( $app->config_from_override,
              '... config_from_override true as expected' );
 
-        is( $app->configfile, path('/notused'),
-            '... configfile is /notused as expected' );
+        is( $app->configfile, path('/notused/override'),
+            '... configfile is /notused/override as expected' );
     }
     {
         my $app = App::DefaultConfigFileCodeRef->new_with_options;
@@ -148,7 +148,7 @@ use Test::NoWarnings 1.04 ':early';
 
 # Required arg not supplied from cmdline
 {
-    local @ARGV = qw( --configfile /notused );
+    local @ARGV = qw( --configfile /notused/override );
     like exception { App->new_with_options },
         ($Getopt::Long::Descriptive::VERSION >= 0.091
             ? qr/Mandatory parameter 'required_from_argv' missing/
@@ -157,7 +157,7 @@ use Test::NoWarnings 1.04 ':early';
 
 # Config file value overriden from cmdline
 {
-    local @ARGV = qw( --configfile /notused --required_from_argv 1 --required_from_config override );
+    local @ARGV = qw( --configfile /notused/override --required_from_argv 1 --required_from_config override );
 
     my $app = App->new_with_options;
     isa_ok( $app, 'App' );
