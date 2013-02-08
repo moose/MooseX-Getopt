@@ -47,8 +47,7 @@ use Test::NoWarnings 1.04 ':early';
             optional_from_config => 'from_config_2',
         );
 
-        my $cpath = Path::Tiny::path('/notused/default');
-        if ( $file ne $cpath ) {
+        if ( $file ne Path::Tiny::path('/notused/default') ) {
             $config{config_from_override} = 1;
         }
 
