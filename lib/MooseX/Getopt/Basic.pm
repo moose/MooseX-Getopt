@@ -46,11 +46,10 @@ sub process_argv {
 
             $configfile = $cfmeta->default
                 if not defined $configfile and $cfmeta->has_default;
-            if (ref $configfile eq 'CODE') {
-                # not sure theres a lot you can do with the class and may break some assumptions
-                # warn?
-                $configfile = &$configfile($class);
-            }
+
+            # note that this will die horribly if the default sub depends on
+            # other attributes
+            $configfile = $configfile->($class) if ref $configfile eq 'CODE';
             if (defined $configfile) {
                 $config_from_file = try {
                     $class->get_config_from_file($configfile);
