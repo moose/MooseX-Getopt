@@ -31,12 +31,12 @@ sub process_argv {
         $opt_parser->getoptions( "configfile=s" => \$configfile );
 
         my $cfmeta = $class->meta->find_attribute_by_name('configfile');
+        my $init_arg = $cfmeta->init_arg;
 
         # was it passed to the constructor?
         if (!defined $configfile)
         {
-            my $key = $cfmeta->init_arg;
-            $configfile = $constructor_params->{$key} if defined $key;
+            $configfile = $constructor_params->{$init_arg} if defined $init_arg;
         }
 
         if(!defined $configfile) {
@@ -59,6 +59,9 @@ sub process_argv {
                     die $_ unless /Specified configfile '\Q$configfile\E' does not exist/;
                 };
             }
+
+            $constructor_params->{$init_arg} = $configfile
+                if defined $configfile and defined $init_arg;
         }
         else {
             $config_from_file = $class->get_config_from_file($configfile);

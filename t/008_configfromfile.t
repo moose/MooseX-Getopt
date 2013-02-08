@@ -2,11 +2,14 @@ use strict;
 use warnings;
 
 use Test::Requires { 'MooseX::ConfigFromFile' => '0.06' };    # skip all if not installed
-use Test::More tests => 50;
+use Test::More tests => 56;
 use Test::Fatal;
+use Test::Deep '!blessed';
 use Path::Tiny;
+use Scalar::Util 'blessed';
 use Test::NoWarnings 1.04 ':early';
 
+my %constructor_args;
 {
     package App;
 
@@ -53,6 +56,13 @@ use Test::NoWarnings 1.04 ':early';
 
         return \%config;
     }
+
+    around BUILDARGS => sub
+    {
+        my ($orig, $class) = (shift, shift);
+        my $args = $class->$orig(@_);
+        $constructor_args{$class} = $args;
+    };
 }
 
 {
@@ -106,6 +116,14 @@ use Test::NoWarnings 1.04 ':early';
 
         is( $app->configfile, path('/notused/default'),
             '... configfile is /notused/default as expected' );
+
+        cmp_deeply(
+            $constructor_args{blessed($app)},
+            superhashof({
+                configfile => str(path('/notused/default')),
+            }),
+            'correct constructor args passed',
+        );
     }
 
     {
@@ -118,6 +136,14 @@ use Test::NoWarnings 1.04 ':early';
 
         is( $app->configfile, path('/notused/default'),
             '... configfile is /notused/default as expected' );
+
+        cmp_deeply(
+            $constructor_args{blessed $app},
+            superhashof({
+                configfile => str(path('/notused/default')),
+            }),
+            'correct constructor args passed',
+        );
     }
 
     {
@@ -130,6 +156,14 @@ use Test::NoWarnings 1.04 ':early';
 
         is( $app->configfile, path('/notused/default'),
             '... configfile is /notused/default as expected' );
+
+        cmp_deeply(
+            $constructor_args{blessed $app},
+            superhashof({
+                configfile => str(path('/notused/default')),
+            }),
+            'correct constructor args passed',
+        );
     }
 }
 
@@ -153,6 +187,14 @@ use Test::NoWarnings 1.04 ':early';
 
         is( $app->configfile, path('/notused/override'),
             '... configfile is /notused/override as expected' );
+
+        cmp_deeply(
+            $constructor_args{blessed $app},
+            superhashof({
+                configfile => str(path('/notused/override')),
+            }),
+            'correct constructor args passed',
+        );
     }
     {
         my $app = App::DefaultConfigFileCodeRef->new_with_options;
@@ -164,6 +206,14 @@ use Test::NoWarnings 1.04 ':early';
 
         is( $app->configfile, path('/notused/override'),
             '... configfile is /notused/override as expected' );
+
+        cmp_deeply(
+            $constructor_args{blessed $app},
+            superhashof({
+                configfile => str(path('/notused/override')),
+            }),
+            'correct constructor args passed',
+        );
     }
     TODO: {
         my $app = App::ConfigFileWrapped->new_with_options;
@@ -179,6 +229,14 @@ use Test::NoWarnings 1.04 ':early';
         local $TODO = 'MooseX::ConfigFromFile needs fixes';
         is( $app->configfile, path('/notused/override'),
             '... configfile is /notused as expected' );
+
+        cmp_deeply(
+            $constructor_args{blessed $app},
+            superhashof({
+                configfile => str(path('/notused/override')),
+            }),
+            'correct constructor args passed',
+        );
     }
 }
 
