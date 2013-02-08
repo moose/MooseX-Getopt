@@ -36,7 +36,7 @@ sub process_argv {
         if (!defined $configfile)
         {
             my $key = $cfmeta->init_arg;
-            $configfile = $constructor_params->{$key} if $key;
+            $configfile = $constructor_params->{$key} if defined $key;
         }
 
         if(!defined $configfile) {
