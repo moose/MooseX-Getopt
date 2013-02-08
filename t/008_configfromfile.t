@@ -93,7 +93,7 @@ my %constructor_args;
     use Moose;
     extends 'App';
 
-    around configfile => sub { '/notused/default' };
+    sub _get_default_configfile { '/notused/default' }
 }
 
 
@@ -146,7 +146,11 @@ my %constructor_args;
         );
     }
 
-    {
+    SKIP: {
+        eval "use MooseX::ConfigFromFile 0.08 (); 1;";
+        diag("MooseX::ConfigFromFile 0.08 needed to test this use of configfile defaults"),
+        skip "MooseX::ConfigFromFile 0.08 needed to test this use of configfile defaults", 7 if $@;
+
         my $app = App::ConfigFileWrapped->new_with_options;
         isa_ok( $app, 'App::ConfigFileWrapped' );
         app_ok( $app );
@@ -215,7 +219,7 @@ my %constructor_args;
             'correct constructor args passed',
         );
     }
-    TODO: {
+    {
         my $app = App::ConfigFileWrapped->new_with_options;
         isa_ok( $app, 'App::ConfigFileWrapped' );
         app_ok( $app );
@@ -223,10 +227,6 @@ my %constructor_args;
         ok( $app->config_from_override,
              '... config_from_override true as expected' );
 
-# FIXME - in order for this to work, we need to fix CFF so the
-# configfile method always returns the actual value of the attribute,
-# not the default sub thingy.
-        local $TODO = 'MooseX::ConfigFromFile needs fixes';
         is( $app->configfile, path('/notused/override'),
             '... configfile is /notused as expected' );
 
