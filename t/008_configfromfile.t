@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::Requires { 'MooseX::ConfigFromFile' => '0.06' };    # skip all if not installed
+use Test::Requires 'MooseX::ConfigFromFile';    # skip all if not installed
 use Test::More tests => 56;
 use Test::Fatal;
 use Test::Deep '!blessed';
@@ -83,7 +83,7 @@ my %constructor_args;
     extends 'App';
 
     has '+configfile' => (
-        default => sub { return Path::Tiny::path('/notused/default') },
+        default => sub { return Path::Tiny::path('/notused/default')->stringify },
     );
 }
 
