@@ -10,3 +10,5 @@ MANIFEST.bak
 *.*.swp
 .*
 !.gitignore
+/TODO
+/todo.txt
