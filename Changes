@@ -1,6 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+
+0.54      2013-02-09 16:25:32 PST-0800
  - fix broken tests on win32 with file comparisons
  - allow configfiles called "0"
  - support more mechanisms for overriding default configfile
