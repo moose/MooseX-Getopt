@@ -1,5 +1,5 @@
 use strict;
-use warnings;
+use warnings FATAL => 'all';
 
 use Test::Requires 'MooseX::ConfigFromFile';    # skip all if not installed
 use Test::More tests => 56;

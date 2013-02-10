@@ -1,5 +1,5 @@
 use strict;
-use warnings;
+use warnings FATAL => 'all';
 
 use Test::More tests => 6;
 use Test::NoWarnings 1.04 ':early';

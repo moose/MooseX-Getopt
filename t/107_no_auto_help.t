@@ -9,7 +9,7 @@
 # when --help is passed (and MooseX::ConfigFromFile is in use).
 
 use strict;
-use warnings;
+use warnings FATAL => 'all';
 
 use Test::Requires { 'MooseX::SimpleConfig' => 0.07 };  # skip all if not installed
 use Test::More tests => 2;
@@ -21,7 +21,7 @@ use Test::NoWarnings 1.04 ':early';
 my $fail_on_exit = 1;
 {
     package Class;
-    use strict; use warnings;
+    use strict; use warnings FATAL => 'all';
 
     use Moose;
     with

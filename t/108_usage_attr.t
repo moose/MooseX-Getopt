@@ -3,13 +3,13 @@
 
 # This tests the fix (that fulfills the documentation claim).
 
-use strict; use warnings;
+use strict; use warnings FATAL => 'all';
 use Test::More tests => 4;
 use Test::NoWarnings 1.04 ':early';
 
 {
     package MyClass;
-    use strict; use warnings;
+    use strict; use warnings FATAL => 'all';
     use Moose;
     with 'MooseX::Getopt';
 }

@@ -8,13 +8,13 @@
 # early), followed by options added by parent classes and roles, and then
 # options added by this class.
 
-use strict; use warnings;
+use strict; use warnings FATAL => 'all';
 use Test::More tests => 2;
 use Test::NoWarnings 1.04 ':early';
 
 {
     package MyClass;
-    use strict; use warnings;
+    use strict; use warnings FATAL => 'all';
     use Moose;
     with 'MooseX::Getopt';
 
