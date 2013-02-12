@@ -114,7 +114,7 @@ my %constructor_args;
         ok(  !$app->config_from_override,
             '... config_from_override false as expected' );
 
-        is( $app->configfile, path('/notused/default'),
+        is( path($app->configfile), path('/notused/default'),
             '... configfile is /notused/default as expected' );
 
         cmp_deeply(
@@ -134,7 +134,7 @@ my %constructor_args;
         ok(  !$app->config_from_override,
             '... config_from_override false as expected' );
 
-        is( $app->configfile, path('/notused/default'),
+        is( path($app->configfile), path('/notused/default'),
             '... configfile is /notused/default as expected' );
 
         cmp_deeply(
@@ -189,7 +189,7 @@ my %constructor_args;
         ok( $app->config_from_override,
              '... config_from_override true as expected' );
 
-        is( $app->configfile, path('/notused/override'),
+        is( path($app->configfile), path('/notused/override'),
             '... configfile is /notused/override as expected' );
 
         cmp_deeply(
@@ -208,7 +208,7 @@ my %constructor_args;
         ok( $app->config_from_override,
              '... config_from_override true as expected' );
 
-        is( $app->configfile, path('/notused/override'),
+        is( path($app->configfile), path('/notused/override'),
             '... configfile is /notused/override as expected' );
 
         cmp_deeply(
@@ -227,7 +227,7 @@ my %constructor_args;
         ok( $app->config_from_override,
              '... config_from_override true as expected' );
 
-        is( $app->configfile, path('/notused/override'),
+        is( path($app->configfile), path('/notused/override'),
             '... configfile is /notused as expected' );
 
         cmp_deeply(
