@@ -1,6 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+
+0.55      2013-02-12 10:02:55 PST-0800
  - fix broken tests on win32 with file comparisons
 
 0.54      2013-02-09 16:25:32 PST-0800
