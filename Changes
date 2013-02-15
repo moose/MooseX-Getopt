@@ -1,6 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+
+0.56      2013-02-15 13:13:18 PST-0800
  - depend on newest Path::Tiny, to regain 5.8.x compatibility (gone since
    v0.52)
 
