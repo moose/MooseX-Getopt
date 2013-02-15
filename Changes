@@ -1,6 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+ - depend on newest Path::Tiny, to regain 5.8.x compatibility (gone since
+   v0.52)
 
 0.55      2013-02-12 10:02:55 PST-0800
  - fix broken tests on win32 with file comparisons

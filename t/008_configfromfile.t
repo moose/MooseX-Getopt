@@ -5,7 +5,7 @@ use Test::Requires 'MooseX::ConfigFromFile';    # skip all if not installed
 use Test::More tests => 56;
 use Test::Fatal;
 use Test::Deep '!blessed';
-use Path::Tiny;
+use Path::Tiny 0.009;
 use Scalar::Util 'blessed';
 use Test::NoWarnings 1.04 ':early';
 
