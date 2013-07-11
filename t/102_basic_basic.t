@@ -3,7 +3,7 @@ use warnings FATAL => 'all';
 
 use Test::More tests => 70;
 use Test::Moose;
-use Test::NoWarnings 1.04 ':early';
+use Test::Warnings;
 
 BEGIN {
     use_ok('MooseX::Getopt::Basic');

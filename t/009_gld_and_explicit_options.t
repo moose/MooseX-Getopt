@@ -3,7 +3,7 @@ use warnings FATAL => 'all';
 
 use Test::More tests => 6;
 use Test::Fatal;
-use Test::NoWarnings 1.04 ':early';
+use Test::Warnings;
 
 use Getopt::Long::Descriptive;
 

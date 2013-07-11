@@ -3,7 +3,7 @@ use warnings FATAL => 'all';
 
 use Test::More tests => 7;
 use Test::Trap;
-use Test::NoWarnings 1.04 ':early';
+use Test::Warnings;
 
 {
     package MyScript;

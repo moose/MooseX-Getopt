@@ -16,9 +16,10 @@
 
 # Update: since 0.41, usage info is printed to stdout, not stderr.
 
-use strict; use warnings FATAL => 'all';
+use strict;
+use warnings FATAL => 'all';
 use Test::More tests => 23;
-use Test::NoWarnings 1.04 ':early';
+use Test::Warnings;
 use Test::Trap;
 
 {

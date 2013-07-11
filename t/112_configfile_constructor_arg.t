@@ -5,7 +5,7 @@ use warnings FATAL => 'all';
 
 use Test::Requires 'MooseX::SimpleConfig';  # skip all if not installed
 use Test::More tests => 3;
-use Test::NoWarnings 1.04 ':early';
+use Test::Warnings;
 use Path::Tiny 0.009;
 
 # avoid warning if all we have installed is YAML or YAML::Syck - the user will

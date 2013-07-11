@@ -7,7 +7,7 @@ use Test::Fatal;
 use Test::Deep '!blessed';
 use Path::Tiny 0.009;
 use Scalar::Util 'blessed';
-use Test::NoWarnings 1.04 ':early';
+use Test::Warnings;
 
 my %constructor_args;
 {

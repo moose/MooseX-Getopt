@@ -2,7 +2,7 @@ use strict;
 use warnings FATAL => 'all';
 
 use Test::More tests => 13;
-use Test::NoWarnings 1.04 ':early';
+use Test::Warnings;
 use Moose ();
 use Moose::Meta::Class;
 

@@ -16,7 +16,7 @@ use Test::More tests => 2;
 use Test::Warn 0.21;
 use Test::Fatal 0.003;
 
-use Test::NoWarnings 1.04 ':early';
+use Test::Warnings;
 
 my $fail_on_exit = 1;
 {
