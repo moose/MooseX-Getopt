@@ -264,3 +264,7 @@ other_options...)> in your class to set these.
 
 =cut
 
+=head1 SEE ALSO
+
+L<MooseX::Getopt::Usage>, an extension to generate man pages, with colour
+
