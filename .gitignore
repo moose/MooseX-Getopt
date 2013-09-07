@@ -1,14 +1,4 @@
-MooseX-Getopt-*
-pm_to_blib
-inc
-blib
-Makefile
-Makefile.old
-META.yml
-MANIFEST
-MANIFEST.bak
-*.*.swp
-.*
+/.build/
 !.gitignore
-/TODO
-/todo.txt
+/MooseX-Getopt-*
+/todo/
