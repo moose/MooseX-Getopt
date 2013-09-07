@@ -4,6 +4,7 @@ use warnings FATAL => 'all';
 use Test::More tests => 7;
 use Test::Trap;
 use Test::Warnings;
+use Moose::Util 'find_meta';
 
 {
     package MyScript;
@@ -41,7 +42,7 @@ USAGE
 }
 
 {
-    Class::MOP::class_of('MyScript')->add_before_method_modifier(
+    find_meta('MyScript')->add_before_method_modifier(
         print_usage_text => sub {
             print "--- DOCUMENTATION ---\n";
         },
@@ -68,7 +69,7 @@ USAGE
     # some classes (e.g. ether's darkpan and Catalyst::Runtime) overrode
     # _getopt_full_usage, so we need to keep it in the call stack so we don't
     # break them.
-    Class::MOP::class_of('MyScript2')->add_before_method_modifier(
+    find_meta('MyScript2')->add_before_method_modifier(
         _getopt_full_usage => sub {
             print "--- DOCUMENTATION ---\n";
         },
