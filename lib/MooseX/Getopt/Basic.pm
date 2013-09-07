@@ -182,7 +182,7 @@ sub _usage_format {
 sub _traditional_spec {
     my ( $class, %params ) = @_;
 
-    my ( @options, %name_to_init_arg, %options );
+    my ( @options, %name_to_init_arg );
 
     foreach my $opt ( @{ $params{options} } ) {
         push @options, $opt->{opt_string};
