@@ -1,6 +1,8 @@
 Revision history for Perl extension MooseX-Getopt
 
 {{$NEXT}}
+
+0.57      2013-09-07 21:29:05Z (Karen Etheridge)
  - spelling fixes (RT#87780, David Steinbrunner)
  - removed use of deprecated Class::MOP::load_class
  - repository migrated from shadowcat to the github moose organization
