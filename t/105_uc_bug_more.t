@@ -5,13 +5,14 @@ use Test::More tests => 13;
 use Test::Warnings;
 use Moose ();
 use Moose::Meta::Class;
+use Module::Runtime 'use_module';
 
 foreach my $role (qw/
     MooseX::Getopt
     MooseX::Getopt::GLD
     MooseX::Getopt::Basic
 /) {
-    Class::MOP::load_class($role);
+    use_module($role);
 
     my $meta = Moose::Meta::Class->create_anon_class(
         superclasses => ['Moose::Object'],
