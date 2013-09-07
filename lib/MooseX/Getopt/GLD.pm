@@ -1,6 +1,8 @@
 package MooseX::Getopt::GLD;
 # ABSTRACT: A Moose role for processing command line options with Getopt::Long::Descriptive
 
+use strict;
+use warnings;
 use MooseX::Role::Parameterized;
 
 use Getopt::Long::Descriptive 0.081;
