@@ -3,6 +3,7 @@ Revision history for Perl extension MooseX-Getopt
 {{$NEXT}}
  - spelling fixes (RT#87780, David Steinbrunner)
  - removed use of deprecated Class::MOP::load_class
+ - repository migrated from shadowcat to the github moose organization
 
 0.56      2013-02-15 13:13:18 PST-0800
  - depend on newest Path::Tiny, to regain 5.8.x compatibility (gone since
