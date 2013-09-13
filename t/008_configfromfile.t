@@ -2,12 +2,12 @@ use strict;
 use warnings FATAL => 'all';
 
 use Test::Requires 'MooseX::ConfigFromFile';    # skip all if not installed
-use Test::More tests => 56;
+use Test::More;
 use Test::Fatal;
 use Test::Deep '!blessed';
 use Path::Tiny 0.009;
 use Scalar::Util 'blessed';
-use Test::Warnings;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 my %constructor_args;
 {
@@ -310,3 +310,5 @@ sub app_ok {
     is( $app->required_from_argv, '1',
         '... required_from_argv is 1 as expected' );
 }
+
+done_testing;

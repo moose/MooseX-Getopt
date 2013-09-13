@@ -1,9 +1,9 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More tests => 70;
+use Test::More;
 use Test::Moose;
-use Test::Warnings;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 BEGIN {
     use_ok('MooseX::Getopt');
@@ -228,3 +228,5 @@ foreach my $attr_name (qw(data cow horse _private_stuff_cmdline)) {
     is_deeply(\@ARGV, \@args, '@ARGV unmangled');
     is_deeply($app->extra_argv, ['-'], 'extra_argv accessor');
 }
+
+done_testing;

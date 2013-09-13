@@ -1,8 +1,8 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More tests => 6;
-use Test::Warnings;
+use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 use Getopt::Long::Descriptive;
 
@@ -46,5 +46,4 @@ local @ARGV = ('--foo=10', '--bar=42');
     is($bar->bar, 42, '... got the right value (42)');
 }
 
-
-
+done_testing;

@@ -18,8 +18,8 @@
 
 use strict;
 use warnings FATAL => 'all';
-use Test::More tests => 23;
-use Test::Warnings;
+use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Test::Trap;
 
 {
@@ -59,3 +59,4 @@ foreach my $args ( ['--help'], ['--usage'], ['--?'], ['-?'], ['-h'] )
     is($trap->stderr, '', 'there was no STDERR output');
 }
 
+done_testing;

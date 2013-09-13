@@ -1,8 +1,8 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More tests => 6;
-use Test::Warnings;
+use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 use Getopt::Long::Descriptive;
 
@@ -39,5 +39,4 @@ use_ok('MooseX::Getopt');
     is($foo->nproc, 1, '... got the right value (1), without GLD needing to handle defaults');
 }
 
-
-
+done_testing;

@@ -1,8 +1,8 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More tests => 7;
-use Test::Warnings;
+use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Test::Fatal;
 
 BEGIN {
@@ -62,3 +62,5 @@ like(
     qr/Value "foo" invalid/,
     'Numeric constraint enforced',
 );
+
+done_testing;

@@ -12,11 +12,11 @@ use strict;
 use warnings FATAL => 'all';
 
 use Test::Requires { 'MooseX::SimpleConfig' => 0.07 };  # skip all if not installed
-use Test::More tests => 2;
+use Test::More;
 use Test::Warn 0.21;
 use Test::Fatal 0.003;
 
-use Test::Warnings;
+use Test::Warnings qw(:no_end_test :all);
 
 my $fail_on_exit = 1;
 {
@@ -45,6 +45,9 @@ my $fail_on_exit = 1;
 
 END {
     ok(!$fail_on_exit, 'getoptions() lives');
+
+    had_no_warnings if $ENV{AUTHOR_TESTING};
+    done_testing;
 
     # cancel the non-zero exit status from print_usage_text()
     exit 0;

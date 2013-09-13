@@ -1,9 +1,9 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More tests => 7;
+use Test::More;
 use Test::Trap;
-use Test::Warnings;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Moose::Util 'find_meta';
 
 {
@@ -84,3 +84,4 @@ USAGE
     );
 }
 
+done_testing;

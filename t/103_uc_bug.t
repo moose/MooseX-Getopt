@@ -1,8 +1,8 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More tests => 4;
-use Test::Warnings;
+use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 {
     package App;
@@ -28,3 +28,5 @@ use Test::Warnings;
     is($app->TrackingNumber, '1Z1234567812345670', '... TrackingNumber is as expected');
     is($app->otherparam, 'foo', '... otherparam is as expected');
 }
+
+done_testing;

@@ -10,8 +10,8 @@
 
 use strict;
 use warnings FATAL => 'all';
-use Test::More tests => 2;
-use Test::Warnings;
+use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 {
     package MyClass;
@@ -37,3 +37,5 @@ usage: 110_sort_usage_by_attr_order.t [-?h] [long options...]
 USAGE
 
 is($obj->usage->text, $expected, 'Usage text has nicely sorted options');
+
+done_testing;

@@ -1,9 +1,9 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More tests => 6;
+use Test::More;
 use Test::Fatal;
-use Test::Warnings;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 use Getopt::Long::Descriptive;
 
@@ -39,7 +39,4 @@ isa_ok($foo, 'Testing::Foo');
 is($foo->bar, 10, '... got the right values');
 is($foo->baz, 100, '... got the right values');
 
-
-
-
-
+done_testing;

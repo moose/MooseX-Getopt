@@ -5,8 +5,8 @@
 
 use strict;
 use warnings FATAL => 'all';
-use Test::More tests => 4;
-use Test::Warnings;
+use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 {
     package MyClass;
@@ -33,3 +33,4 @@ my $gld_obj = MyClassWithGLD->new_with_options();
 ok($gld_obj->meta->has_attribute('usage'), 'class has usage attribute');
 isa_ok($gld_obj->usage, 'Getopt::Long::Descriptive::Usage');
 
+done_testing;

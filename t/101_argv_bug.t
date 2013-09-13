@@ -1,8 +1,8 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More tests => 4;
-use Test::Warnings;
+use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 use MooseX::Getopt;
 
@@ -34,3 +34,4 @@ use MooseX::Getopt;
     is($app->length, 50, '... length is 50 as expected');
 }
 
+done_testing;

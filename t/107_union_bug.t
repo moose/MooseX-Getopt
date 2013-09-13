@@ -1,8 +1,8 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More tests => 6;
-use Test::Warnings;
+use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 {
     package example;
@@ -61,3 +61,4 @@ use Test::Warnings;
     is_deeply($example->results, [qw(1234 5678 9012)], 'result as expected');
 }
 
+done_testing;

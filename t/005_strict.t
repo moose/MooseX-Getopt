@@ -1,9 +1,9 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More tests => 11;
+use Test::More;
 use Test::Fatal;
-use Test::Warnings;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 BEGIN {
     use_ok('MooseX::Getopt');
@@ -96,3 +96,4 @@ BEGIN {
     like exception { App->new_with_options }, qr/Unknown option: length/;
 }
 
+done_testing;

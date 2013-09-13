@@ -1,9 +1,9 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More tests => 7;
+use Test::More;
 use Test::Fatal 0.003;
-use Test::Warnings;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 {
     package Testing::Foo;
@@ -50,3 +50,5 @@ is_deeply($pa->constructor_params, {
 is_deeply($pa->extra_argv, [
     'file.dat'
 ], 'extra_argv');
+
+done_testing;

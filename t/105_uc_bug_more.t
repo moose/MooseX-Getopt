@@ -1,8 +1,8 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More tests => 13;
-use Test::Warnings;
+use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Moose ();
 use Moose::Meta::Class;
 use Module::Runtime 'use_module';
@@ -36,3 +36,4 @@ foreach my $role (qw/
         "Debug was set for argv --debug on $role");
 }
 
+done_testing;

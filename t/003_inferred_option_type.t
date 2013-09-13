@@ -1,8 +1,8 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::More tests => 6;
-use Test::Warnings;
+use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 BEGIN {
     use_ok('MooseX::Getopt');
@@ -46,3 +46,4 @@ BEGIN {
     is_deeply($app->nums, [3, 5], '... nums is [3, 5] as expected');
 }
 
+done_testing;

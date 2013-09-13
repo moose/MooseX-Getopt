@@ -4,8 +4,8 @@ use warnings FATAL => 'all';
 # respect the configfile value passed into the constructor.
 
 use Test::Requires 'MooseX::SimpleConfig';  # skip all if not installed
-use Test::More tests => 3;
-use Test::Warnings;
+use Test::More;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Path::Tiny 0.009;
 
 {
@@ -36,3 +36,4 @@ use Path::Tiny 0.009;
     );
 }
 
+done_testing;
