@@ -3,6 +3,7 @@ Revision history for Perl extension MooseX-Getopt
 {{$NEXT}}
  - remove use of deprecated $Config::Any::YAML::NO_YAML_XS_WARNING in tests
  - warnings tests bypassed during installation
+ - author metadata moved to contributors
 
 0.57      2013-09-07 21:29:05Z (Karen Etheridge)
  - spelling fixes (RT#87780, David Steinbrunner)
