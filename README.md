@@ -2,6 +2,10 @@
 
 MooseX::Getopt - A Moose role for processing command line options
 
+# VERSION
+
+version 0.58
+
 # SYNOPSIS
 
     ## In your class
@@ -257,20 +261,9 @@ other_options...)` in your class to set these.
 
 [MooseX::Getopt::Usage](http://search.cpan.org/perldoc?MooseX::Getopt::Usage), an extension to generate man pages, with colour
 
-# AUTHORS
+# AUTHOR
 
-- Stevan Little <stevan@iinteractive.com>
-- Brandon L. Black <blblack@gmail.com>
-- Yuval Kogman <nothingmuch@woobling.org>
-- Ryan D Johnson <ryan@innerfence.com>
-- Drew Taylor <drew@drewtaylor.com>
-- Tomas Doran <bobtfish@bobtfish.net>
-- Florian Ragwitz <rafl@debian.org>
-- Dagfinn Ilmari MannsÃ¥ker <ilmari@ilmari.org>
-- Ã†var ArnfjÃ¶rÃ° Bjarmason <avar@cpan.org>
-- Chris Prather <perigrin@cpan.org>
-- Karen Etheridge <ether@cpan.org>
-- Jonathan Swartz <swartz@pobox.com>
+Stevan Little <stevan@iinteractive.com>
 
 # COPYRIGHT AND LICENSE
 
@@ -278,3 +271,31 @@ This software is copyright (c) 2013 by Infinity Interactive, Inc.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
+
+# CONTRIBUTORS
+
+- Brandon L Black <blblack@gmail.com>
+- Chris Prather <chris@prather.org>
+- Dagfinn Ilmari Mannsåker <ilmari@ilmari.org>
+- Damien Krotkine <dkrotkine@weborama.com>
+- Devin Austin <devin@devin-laptop.(none)>
+- Drew Taylor <drew@drewtaylor.com>
+- Florian Ragwitz <rafl@debian.org>
+- Gordon Irving <goraxe@goraxe.me.uk>
+- Hans Dieter Pearcey <hdp@weftsoar.net>
+- Hinrik Örn Sigurðsson <hinrik.sig@gmail.com>
+- Jesse Luehrs <doy@tozt.net>
+- John Goulah <jgoulah@cpan.org>
+- Jonathan Swartz <swartz@pobox.com>
+- Justin Hunter <justin.d.hunter@gmail.com>
+- Karen Etheridge <ether@cpan.org>
+- Nelo Onyiah <nelo.onyiah@gmail.com>
+- Ricardo SIGNES <rjbs@cpan.org>
+- Ryan D Johnson <ryan@innerfence.com>
+- Shlomi Fish <shlomif@iglu.org.il>
+- Stevan Little <stevan.little@iinteractive.com>
+- Todd Hepler <thepler@employees.org>
+- Tomas Doran <bobtfish@bobtfish.net>
+- Yuval Kogman <nothingmuch@woobling.org>
+- t0m <bobtfish@bobtfish.net>
+- Ævar Arnfjörð Bjarmason <avarab@gmail.com>
