@@ -13,9 +13,8 @@ use warnings FATAL => 'all';
 
 use Test::Requires { 'MooseX::SimpleConfig' => 0.07 };  # skip all if not installed
 use Test::More;
-use Test::Warn 0.21;
+use Test::Deep;
 use Test::Fatal 0.003;
-
 use Test::Warnings qw(:no_end_test :all);
 
 my $fail_on_exit = 1;
@@ -39,29 +38,33 @@ my $fail_on_exit = 1;
         },
     );
 
+    around print_usage_text => sub {
+        my ($orig, $self, $usage) = @_;
+        die $usage->text;
+    };
+
     no Moose;
     1;
 }
 
-END {
-    ok(!$fail_on_exit, 'getoptions() lives');
-
-    had_no_warnings if $ENV{AUTHOR_TESTING};
-    done_testing;
-
-    # cancel the non-zero exit status from print_usage_text()
-    exit 0;
-}
-
-
 @ARGV = ('--help');
 
-warning_like {
-    like exception { Class->new_with_options },
-           #usage: 107_no_auto_help.t [-?] [long options...]
-        qr/^usage: [\d\w]+\Q.t [-?] [long options...]\E.\s+\Q-? --usage --help  Prints this usage information.\E.\s+--configfile/ms,
-        'usage information looks good';
-    }
-    qr/^Specified configfile \'this_value_unimportant\' does not exist, is empty, or is not readable$/,
-    'Our dummy config file doesn\'t exist';
+my @warnings = warnings {
+    like(
+        exception { Class->new_with_options },
+        qr/^usage: [\d\w]+.+\Q[long options...]\E\n.*--usage --help  Prints this usage information/ms,
+        'usage information looks good',
+    );
+};
 
+cmp_deeply(
+    \@warnings,
+    [ re(qr/^Specified configfile \'this_value_unimportant\' does not exist, is empty, or is not readable$/) ],
+    'Our dummy config file doesn\'t exist',
+);
+
+ok(!$fail_on_exit, 'getoptions() lives');
+
+had_no_warnings if $ENV{AUTHOR_TESTING};
+
+done_testing;
