@@ -4,7 +4,7 @@ MooseX::Getopt - A Moose role for processing command line options
 
 # VERSION
 
-version 0.58
+version 0.59
 
 # SYNOPSIS
 
@@ -35,23 +35,99 @@ version 0.58
 This is a role which provides an alternate constructor for creating
 objects using parameters passed in from the command line.
 
+# METHODS
+
+## `new_with_options (%params)`
+
+This method will take a set of default `%params` and then collect
+parameters from the command line (possibly overriding those in `%params`)
+and then return a newly constructed object.
+
+The special parameter `argv`, if specified should point to an array
+reference with an array to use instead of `@ARGV`.
+
+If ["GetOptions" in Getopt::Long](https://metacpan.org/pod/Getopt::Long#GetOptions) fails (due to invalid arguments),
+`new_with_options` will throw an exception.
+
+If [Getopt::Long::Descriptive](https://metacpan.org/pod/Getopt::Long::Descriptive) is installed and any of the following
+command line parameters are passed, the program will exit with usage
+information (and the option's state will be stored in the help\_flag
+attribute). You can add descriptions for each option by including a
+__documentation__ option for each attribute to document.
+
+    -?
+    --?
+    -h
+    --help
+    --usage
+
+If you have [Getopt::Long::Descriptive](https://metacpan.org/pod/Getopt::Long::Descriptive) the `usage` parameter is also passed to
+`new` as the usage option.
+
+## `ARGV`
+
+This accessor contains a reference to a copy of the `@ARGV` array
+as it originally existed at the time of `new_with_options`.
+
+## `extra_argv`
+
+This accessor contains an arrayref of leftover `@ARGV` elements that
+[Getopt::Long](https://metacpan.org/pod/Getopt::Long) did not parse.  Note that the real `@ARGV` is left
+untouched.
+
+__Important__: By default, [Getopt::Long](https://metacpan.org/pod/Getopt::Long) will reject unrecognized _options_
+(that is, options that do not correspond with attributes using the Getopt
+trait). To disable this, and allow options to also be saved in `extra_argv` (for example to pass along to another class's `new_with_options`), you can either enable the
+`pass_through` option of [Getopt::Long](https://metacpan.org/pod/Getopt::Long) for your class:  `use Getopt::Long
+qw(:config pass_through);` or specify a value for [MooseX::Getopt::GLD](https://metacpan.org/pod/MooseX::Getopt::GLD)'s `getopt_conf` parameter.
+
+## `usage`
+
+This accessor contains the [Getopt::Long::Descriptive::Usage](https://metacpan.org/pod/Getopt::Long::Descriptive::Usage) object (if
+[Getopt::Long::Descriptive](https://metacpan.org/pod/Getopt::Long::Descriptive) is used).
+
+## `help_flag`
+
+This accessor contains the boolean state of the --help, --usage and --?
+options (true if any of these options were passed on the command line).
+
+## `print_usage_text`
+
+This method is called internally when the `help_flag` state is true.
+It prints the text from the `usage` object (see above) to `stdout` and then the
+program terminates normally.  You can apply a method modification (see
+[Moose::Manual::MethodModifiers](https://metacpan.org/pod/Moose::Manual::MethodModifiers)) if different behaviour is desired, for
+example to include additional text.
+
+## `meta`
+
+This returns the role meta object.
+
+## `process_argv (%params)`
+
+This does most of the work of `new_with_options`, analyzing the parameters
+and `argv`, except for actually calling the constructor. It returns a
+[MooseX::Getopt::ProcessedArgv](https://metacpan.org/pod/MooseX::Getopt::ProcessedArgv) object. `new_with_options` uses this
+method internally, so modifying this method via subclasses/roles will affect
+`new_with_options`.
+
 This module attempts to DWIM as much as possible with the command line
-params by introspecting your class's attributes. It will use the name
+parameters by introspecting your class's attributes. It will use the name
 of your attribute as the command line option, and if there is a type
 constraint defined, it will configure Getopt::Long to handle the option
 accordingly.
 
-You can use the trait [MooseX::Getopt::Meta::Attribute::Trait](http://search.cpan.org/perldoc?MooseX::Getopt::Meta::Attribute::Trait) or the
-attribute metaclass [MooseX::Getopt::Meta::Attribute](http://search.cpan.org/perldoc?MooseX::Getopt::Meta::Attribute) to get non-default
-commandline option names and aliases.
+You can use the trait [MooseX::Getopt::Meta::Attribute::Trait](https://metacpan.org/pod/MooseX::Getopt::Meta::Attribute::Trait) or the
+attribute metaclass [MooseX::Getopt::Meta::Attribute](https://metacpan.org/pod/MooseX::Getopt::Meta::Attribute) to get non-default
+command-line option names and aliases.
 
-You can use the trait [MooseX::Getopt::Meta::Attribute::Trait::NoGetopt](http://search.cpan.org/perldoc?MooseX::Getopt::Meta::Attribute::Trait::NoGetopt)
-or the attribute metaclass [MooseX::Getopt::Meta::Attribute::NoGetopt](http://search.cpan.org/perldoc?MooseX::Getopt::Meta::Attribute::NoGetopt)
-to have `MooseX::Getopt` ignore your attribute in the commandline options.
+You can use the trait [MooseX::Getopt::Meta::Attribute::Trait::NoGetopt](https://metacpan.org/pod/MooseX::Getopt::Meta::Attribute::Trait::NoGetopt)
+or the attribute metaclass [MooseX::Getopt::Meta::Attribute::NoGetopt](https://metacpan.org/pod/MooseX::Getopt::Meta::Attribute::NoGetopt)
+to have `MooseX::Getopt` ignore your attribute in the command-line options.
 
 By default, attributes which start with an underscore are not given
-commandline argument support, unless the attribute's metaclass is set
-to [MooseX::Getopt::Meta::Attribute](http://search.cpan.org/perldoc?MooseX::Getopt::Meta::Attribute). If you don't want your accessors
+command-line argument support, unless the attribute's metaclass is set
+to [MooseX::Getopt::Meta::Attribute](https://metacpan.org/pod/MooseX::Getopt::Meta::Attribute). If you don't want your accessors
 to have the leading underscore in their name, you can do this:
 
     # for read/write attributes
@@ -60,17 +136,17 @@ to have the leading underscore in their name, you can do this:
     # or for read-only attributes
     has '_bar' => (reader => 'bar', ...);
 
-This will mean that Getopt will not handle a --foo param, but your
+This will mean that Getopt will not handle a --foo parameter, but your
 code can still call the `foo` method.
 
 If your class also uses a configfile-loading role based on
-[MooseX::ConfigFromFile](http://search.cpan.org/perldoc?MooseX::ConfigFromFile), such as [MooseX::SimpleConfig](http://search.cpan.org/perldoc?MooseX::SimpleConfig),
-[MooseX::Getopt](http://search.cpan.org/perldoc?MooseX::Getopt)'s `new_with_options` will load the configfile
+[MooseX::ConfigFromFile](https://metacpan.org/pod/MooseX::ConfigFromFile), such as [MooseX::SimpleConfig](https://metacpan.org/pod/MooseX::SimpleConfig),
+[MooseX::Getopt](https://metacpan.org/pod/MooseX::Getopt)'s `new_with_options` will load the configfile
 specified by the `--configfile` option (or the default you've
 given for the configfile attribute) for you.
 
 Options specified in multiple places follow the following
-precedence order: commandline overrides configfile, which
+precedence order: command-line overrides configfile, which
 overrides explicit new\_with\_options parameters.
 
 ## Supported Type Constraints
@@ -164,8 +240,8 @@ Better examples are certainly welcome :)
 ## Inferred Type Constraints
 
 If you define a custom subtype which is a subtype of one of the
-standard ["Supported Type Constraints"](#Supported Type Constraints) above, and do not explicitly
-provide custom support as in ["Custom Type Constraints"](#Custom Type Constraints) above,
+standard ["Supported Type Constraints"](#supported-type-constraints) above, and do not explicitly
+provide custom support as in ["Custom Type Constraints"](#custom-type-constraints) above,
 MooseX::Getopt will treat it like the parent type for Getopt
 purposes.
 
@@ -175,91 +251,15 @@ type for it to the `OptionTypeMap`, it would be treated just
 like a normal `ArrayRef` type for Getopt purposes (that is,
 `=s@`).
 
-# METHODS
-
-## __new\_with\_options (%params)__
-
-This method will take a set of default `%params` and then collect
-params from the command line (possibly overriding those in `%params`)
-and then return a newly constructed object.
-
-The special parameter `argv`, if specified should point to an array
-reference with an array to use instead of `@ARGV`.
-
-If ["GetOptions" in Getopt::Long](http://search.cpan.org/perldoc?Getopt::Long#GetOptions) fails (due to invalid arguments),
-`new_with_options` will throw an exception.
-
-If [Getopt::Long::Descriptive](http://search.cpan.org/perldoc?Getopt::Long::Descriptive) is installed and any of the following
-command line params are passed, the program will exit with usage
-information (and the option's state will be stored in the help\_flag
-attribute). You can add descriptions for each option by including a
-__documentation__ option for each attribute to document.
-
-    -?
-    --?
-    -h
-    --help
-    --usage
-
-If you have [Getopt::Long::Descriptive](http://search.cpan.org/perldoc?Getopt::Long::Descriptive) the `usage` param is also passed to
-`new` as the usage option.
-
-## __ARGV__
-
-This accessor contains a reference to a copy of the `@ARGV` array
-as it originally existed at the time of `new_with_options`.
-
-## __extra\_argv__
-
-This accessor contains an arrayref of leftover `@ARGV` elements that
-[Getopt::Long](http://search.cpan.org/perldoc?Getopt::Long) did not parse.  Note that the real `@ARGV` is left
-un-mangled.
-
-__Important__: By default, [Getopt::Long](http://search.cpan.org/perldoc?Getopt::Long) will reject unrecognized _options_
-(that is, options that do not correspond with attributes using the Getopt
-trait). To disable this, and allow options to also be saved in `extra_argv` (for example to pass along to another class's `new_with_options`), you can either enable the
-`pass_through` option of [Getopt::Long](http://search.cpan.org/perldoc?Getopt::Long) for your class:  `use Getopt::Long
-qw(:config pass_through);` or specify a value for [MooseX::Getopt::GLD](http://search.cpan.org/perldoc?MooseX::Getopt::GLD)'s `getopt_conf` parameter.
-
-## __usage__
-
-This accessor contains the [Getopt::Long::Descriptive::Usage](http://search.cpan.org/perldoc?Getopt::Long::Descriptive::Usage) object (if
-[Getopt::Long::Descriptive](http://search.cpan.org/perldoc?Getopt::Long::Descriptive) is used).
-
-## __help\_flag__
-
-This accessor contains the boolean state of the --help, --usage and --?
-options (true if any of these options were passed on the command line).
-
-## __print\_usage\_text__
-
-This method is called internally when the `help_flag` state is true.
-It prints the text from the `usage` object (see above) to stdout and then the
-program terminates normally.  You can apply a method modification (see
-[Moose::Manual::MethodModifiers](http://search.cpan.org/perldoc?Moose::Manual::MethodModifiers)) if different behaviour is desired, for
-example to include additional text.
-
-## __meta__
-
-This returns the role meta object.
-
-## __process\_argv (%params)__
-
-This does most of the work of `new_with_options`, analyzing the parameters
-and argv, except for actually calling the constructor. It returns a
-[MooseX::Getopt::ProcessedArgv](http://search.cpan.org/perldoc?MooseX::Getopt::ProcessedArgv) object. `new_with_options` uses this
-method internally, so modifying this method via subclasses/roles will affect
-`new_with_options`.
-
 ## More Customization Options
 
-See ["Configuring Getopt::Long" in Getopt::Long](http://search.cpan.org/perldoc?Getopt::Long#Configuring Getopt::Long) for many other customizations you
+See ["Configuring Getopt::Long" in Getopt::Long](https://metacpan.org/pod/Getopt::Long#Configuring-Getopt::Long) for many other customizations you
 can make to how options are parsed. Simply `use Getopt::Long qw(:config
 other_options...)` in your class to set these.
 
 # SEE ALSO
 
-[MooseX::Getopt::Usage](http://search.cpan.org/perldoc?MooseX::Getopt::Usage), an extension to generate man pages, with colour
+[MooseX::Getopt::Usage](https://metacpan.org/pod/MooseX::Getopt::Usage), an extension to generate man pages, with colour
 
 # AUTHOR
 
@@ -267,7 +267,7 @@ Stevan Little <stevan@iinteractive.com>
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Infinity Interactive, Inc.
+This software is copyright (c) 2007 by Infinity Interactive, Inc.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
@@ -276,14 +276,14 @@ the same terms as the Perl 5 programming language system itself.
 
 - Brandon L Black <blblack@gmail.com>
 - Chris Prather <chris@prather.org>
-- Dagfinn Ilmari Mannsåker <ilmari@ilmari.org>
+- Dagfinn Ilmari MannsÃ¥ker <ilmari@ilmari.org>
 - Damien Krotkine <dkrotkine@weborama.com>
 - Devin Austin <devin@devin-laptop.(none)>
 - Drew Taylor <drew@drewtaylor.com>
 - Florian Ragwitz <rafl@debian.org>
 - Gordon Irving <goraxe@goraxe.me.uk>
 - Hans Dieter Pearcey <hdp@weftsoar.net>
-- Hinrik Örn Sigurðsson <hinrik.sig@gmail.com>
+- Hinrik Ã–rn SigurÃ°sson <hinrik.sig@gmail.com>
 - Jesse Luehrs <doy@tozt.net>
 - John Goulah <jgoulah@cpan.org>
 - Jonathan Swartz <swartz@pobox.com>
@@ -297,5 +297,4 @@ the same terms as the Perl 5 programming language system itself.
 - Todd Hepler <thepler@employees.org>
 - Tomas Doran <bobtfish@bobtfish.net>
 - Yuval Kogman <nothingmuch@woobling.org>
-- t0m <bobtfish@bobtfish.net>
-- Ævar Arnfjörð Bjarmason <avarab@gmail.com>
+- Ã†var ArnfjÃ¶rÃ° Bjarmason <avarab@gmail.com>
