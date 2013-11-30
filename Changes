@@ -1,80 +1,80 @@
-Revision history for Perl extension MooseX-Getopt
+Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
-0.58      2013-09-13 16:57:41Z (Karen Etheridge)
+0.58      2013-09-13 16:57:41Z
  - remove use of deprecated $Config::Any::YAML::NO_YAML_XS_WARNING in tests
  - warnings tests bypassed during installation
  - author metadata moved to contributors
 
-0.57      2013-09-07 21:29:05Z (Karen Etheridge)
+0.57      2013-09-07 21:29:05Z
  - spelling fixes (RT#87780, David Steinbrunner)
  - removed use of deprecated Class::MOP::load_class
  - repository migrated from shadowcat to the github moose organization
 
-0.56      2013-02-15 13:13:18 PST-0800
+0.56      2013-02-15 21:13:18Z
  - depend on newest Path::Tiny, to regain 5.8.x compatibility (gone since
    v0.52)
 
-0.55      2013-02-12 10:02:55 PST-0800
+0.55      2013-02-12 18:02:55Z
  - fix broken tests on win32 with file comparisons
 
-0.54      2013-02-09 16:25:32 PST-0800
+0.54      2013-02-10 00:25:32Z
  - fix broken tests on win32 with file comparisons
  - allow configfiles called "0"
  - support more mechanisms for overriding default configfile
  - when using in conjunction with MooseX::ConfigFromFile, configfile value now
    properly passed to new()
 
-0.53      2013-02-05 09:59:00 PST-0800
+0.53      2013-02-05 17:59:00Z
  - properly indicate optional dependency in tests using
    MooseX::ConfigFromFile
 
-0.52      2013-02-02 19:01:25 PST-0800
+0.52      2013-02-03 03:01:25Z
  - tests converted from using Path::Class to Path::Tiny
 
-0.51      2013-01-27 09:38:11 PST-0800
+0.51      2013-01-27 17:38:11Z
  - missing test prereqs now declared (thanks for the automated reports, David
    Cantrell!)
 
-0.50      2012-12-27 00:20:56 PST-0800
+0.50      2012-12-27 08:20:56Z
  - unbreak Catalyst::Runtime tests (etc) by keeping _getopt_full_usage in the
    callstack. (RT#82249)
 
-0.49      2012-12-26 10:13:41 PST-0800
+0.49      2012-12-26 18:13:41Z
  - silence a warning in tests if the user does not have YAML::XS installed
    (thanks for the report, Getty!)
  - fix off-by-one issues in test plans if optional requirements are not met
 
-0.48      2012-12-23 18:08:04 PST-0800
+0.48      2012-12-24 02:08:04Z
  - documentation and tests amended to prefer usage of 'trait' over 'metaclass'
    as much as possible
  - print_usage_text() exposed as a public method, to make it easier for
    consuming classes to modify the behaviour when usage text is printed
 
-0.47      2012-08-30 16:37:59 PDT-0700
+0.47      2012-08-30 23:37:59Z
  - re-release to remove double $VERSION declarations
 
-0.46      2012-08-30 15:17:28 PDT-0700
+0.46      2012-08-30 22:17:28Z
  - -h is also treated as a --help option
 
-0.45      2012-05-13 09:49:58 PDT-0700
+0.45      2012-05-13 16:49:58Z
  - use Path::Class in test to avoid test failures on MSWin32 with filename
    construction
 
-0.44      2012-05-11 10:44:48 PDT-0700
+0.44      2012-05-11 17:44:48Z
  - now respecting value of configfile passed to the constructor, when used in
    conjunction with MooseX::ConfigFromFile. (Karen Etheridge)
 
-0.43      2012-04-29 09:35:52 PDT-0700
+0.43      2012-04-29 16:35:52Z
  - re-release as non-trial.
 
-0.42-TRIAL 2012-04-15 09:13:05 PDT-0700
+0.42      2012-04-15 16:13:05Z (TRIAL RELEASE)
  - reformatted the Changes file, with the help of CPAN::Changes, to something
    a little more standard.
  - more release-only tests added
 
-0.41-TRIAL 2012-04-14 18:36:00 PDT-0700
+0.41      2012-04-15 01:36:00Z (TRIAL RELEASE)
  - Now bails with exit status 0, rather than dying, when printing
    requested --usage/--help information (usage printed via invalid arguments
    will still die, however). (Karen Etheridge)
