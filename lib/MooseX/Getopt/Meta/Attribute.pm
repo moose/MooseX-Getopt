@@ -73,12 +73,12 @@ use this as the B<Getopt> alias, like so:
 
 =method B<cmd_flag>
 
-Changes the commandline flag to be this value, instead of the default,
+Changes the command-line flag to be this value, instead of the default,
 which is the same as the attribute name.
 
 =method B<cmd_aliases>
 
-Adds more aliases for this commandline flag, useful for short options
+Adds more aliases for this command-line flag, useful for short options
 and such.
 
 =method B<has_cmd_flag>

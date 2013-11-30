@@ -1,5 +1,5 @@
 package MooseX::Getopt::Meta::Attribute::NoGetopt;
-# ABSTRACT: Optional meta attribute for ignoring params
+# ABSTRACT: Optional meta attribute for ignoring parameters
 
 use Moose;
 

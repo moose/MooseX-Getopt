@@ -1,5 +1,5 @@
 package MooseX::Getopt::Strict;
-# ABSTRACT: only make options for attrs with the Getopt metaclass
+# ABSTRACT: only make options for attributes with the Getopt metaclass
 
 use Moose::Role;
 

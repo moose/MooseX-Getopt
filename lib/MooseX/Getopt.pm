@@ -38,22 +38,24 @@ no Moose::Role;
 This is a role which provides an alternate constructor for creating
 objects using parameters passed in from the command line.
 
+=for stopwords DWIM metaclass
+
 This module attempts to DWIM as much as possible with the command line
-params by introspecting your class's attributes. It will use the name
+parameters by introspecting your class's attributes. It will use the name
 of your attribute as the command line option, and if there is a type
 constraint defined, it will configure Getopt::Long to handle the option
 accordingly.
 
 You can use the trait L<MooseX::Getopt::Meta::Attribute::Trait> or the
 attribute metaclass L<MooseX::Getopt::Meta::Attribute> to get non-default
-commandline option names and aliases.
+command-line option names and aliases.
 
 You can use the trait L<MooseX::Getopt::Meta::Attribute::Trait::NoGetopt>
 or the attribute metaclass L<MooseX::Getopt::Meta::Attribute::NoGetopt>
-to have C<MooseX::Getopt> ignore your attribute in the commandline options.
+to have C<MooseX::Getopt> ignore your attribute in the command-line options.
 
 By default, attributes which start with an underscore are not given
-commandline argument support, unless the attribute's metaclass is set
+command-line argument support, unless the attribute's metaclass is set
 to L<MooseX::Getopt::Meta::Attribute>. If you don't want your accessors
 to have the leading underscore in their name, you can do this:
 
@@ -63,8 +65,10 @@ to have the leading underscore in their name, you can do this:
   # or for read-only attributes
   has '_bar' => (reader => 'bar', ...);
 
-This will mean that Getopt will not handle a --foo param, but your
+This will mean that Getopt will not handle a --foo parameter, but your
 code can still call the C<foo> method.
+
+=for stopwords configfile
 
 If your class also uses a configfile-loading role based on
 L<MooseX::ConfigFromFile>, such as L<MooseX::SimpleConfig>,
@@ -73,7 +77,7 @@ specified by the C<--configfile> option (or the default you've
 given for the configfile attribute) for you.
 
 Options specified in multiple places follow the following
-precedence order: commandline overrides configfile, which
+precedence order: command-line overrides configfile, which
 overrides explicit new_with_options parameters.
 
 =head2 Supported Type Constraints
@@ -92,6 +96,8 @@ which would enable the following command line options:
 
   % my_script.pl --verbose
   % my_script.pl --noverbose
+
+=for stopwords Str
 
 =item I<Int>, I<Float>, I<Str>
 
@@ -133,6 +139,8 @@ which would enable the following command line options:
 =back
 
 =head2 Custom Type Constraints
+
+=for stopwords subtype
 
 It is possible to create custom type constraint to option spec
 mappings if you need them. The process is fairly simple (but a
@@ -182,10 +190,10 @@ type for it to the C<OptionTypeMap>, it would be treated just
 like a normal C<ArrayRef> type for Getopt purposes (that is,
 C<=s@>).
 
-=method B<new_with_options (%params)>
+=method C<< new_with_options (%params) >>
 
 This method will take a set of default C<%params> and then collect
-params from the command line (possibly overriding those in C<%params>)
+parameters from the command line (possibly overriding those in C<%params>)
 and then return a newly constructed object.
 
 The special parameter C<argv>, if specified should point to an array
@@ -195,7 +203,7 @@ If L<Getopt::Long/GetOptions> fails (due to invalid arguments),
 C<new_with_options> will throw an exception.
 
 If L<Getopt::Long::Descriptive> is installed and any of the following
-command line params are passed, the program will exit with usage
+command line parameters are passed, the program will exit with usage
 information (and the option's state will be stored in the help_flag
 attribute). You can add descriptions for each option by including a
 B<documentation> option for each attribute to document.
@@ -206,19 +214,19 @@ B<documentation> option for each attribute to document.
   --help
   --usage
 
-If you have L<Getopt::Long::Descriptive> the C<usage> param is also passed to
+If you have L<Getopt::Long::Descriptive> the C<usage> parameter is also passed to
 C<new> as the usage option.
 
-=method B<ARGV>
+=method C<ARGV>
 
 This accessor contains a reference to a copy of the C<@ARGV> array
 as it originally existed at the time of C<new_with_options>.
 
-=method B<extra_argv>
+=method C<extra_argv>
 
 This accessor contains an arrayref of leftover C<@ARGV> elements that
 L<Getopt::Long> did not parse.  Note that the real C<@ARGV> is left
-un-mangled.
+untouched.
 
 B<Important>: By default, L<Getopt::Long> will reject unrecognized I<options>
 (that is, options that do not correspond with attributes using the Getopt
@@ -226,37 +234,39 @@ trait). To disable this, and allow options to also be saved in C<extra_argv> (fo
 C<pass_through> option of L<Getopt::Long> for your class:  C<< use Getopt::Long
 qw(:config pass_through); >> or specify a value for L<MooseX::Getopt::GLD>'s C<getopt_conf> parameter.
 
-=method B<usage>
+=method C<usage>
 
 This accessor contains the L<Getopt::Long::Descriptive::Usage> object (if
 L<Getopt::Long::Descriptive> is used).
 
-=method B<help_flag>
+=method C<help_flag>
 
 This accessor contains the boolean state of the --help, --usage and --?
 options (true if any of these options were passed on the command line).
 
-=method B<print_usage_text>
+=method C<print_usage_text>
 
 This method is called internally when the C<help_flag> state is true.
-It prints the text from the C<usage> object (see above) to stdout and then the
+It prints the text from the C<usage> object (see above) to C<stdout> and then the
 program terminates normally.  You can apply a method modification (see
 L<Moose::Manual::MethodModifiers>) if different behaviour is desired, for
 example to include additional text.
 
-=method B<meta>
+=method C<meta>
 
 This returns the role meta object.
 
-=method B<process_argv (%params)>
+=method C<process_argv (%params)>
 
 This does most of the work of C<new_with_options>, analyzing the parameters
-and argv, except for actually calling the constructor. It returns a
+and C<argv>, except for actually calling the constructor. It returns a
 L<MooseX::Getopt::ProcessedArgv> object. C<new_with_options> uses this
 method internally, so modifying this method via subclasses/roles will affect
 C<new_with_options>.
 
 =head2 More Customization Options
+
+=for stopwords customizations
 
 See L<Getopt::Long/Configuring Getopt::Long> for many other customizations you
 can make to how options are parsed. Simply C<use Getopt::Long qw(:config
