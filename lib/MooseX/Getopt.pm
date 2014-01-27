@@ -274,7 +274,23 @@ other_options...)> in your class to set these.
 
 =cut
 
+=head1 DISCLAIMER
+
+This module was originally written as a demostration of how Moose's meta layer 
+could be leveraged to automate certain tasks such as command line parameter 
+handling. It was never meant to be a full featured CLI generation tool and so 
+is missing some of the more robust features one might expect. If you find this
+module lacking in some way, I suggest taking a look at the modules listed in 
+the L<SEE ALSO> section of this documentation.
+
 =head1 SEE ALSO
 
 L<MooseX::Getopt::Usage>, an extension to generate man pages, with colour
+
+L<MooX::Options>, another approach to the same problem, but with support 
+for Moose, Moo, and Mouse.
+
+L<MooseX::App::Cmd>, a mashup of MooseX::Getopt and App::Cmd, useful for
+building more full featured CLIs.
+
 
