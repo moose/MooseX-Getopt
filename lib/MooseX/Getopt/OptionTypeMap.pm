@@ -1,7 +1,9 @@
 package MooseX::Getopt::OptionTypeMap;
 # ABSTRACT: Storage for the option to type mappings
 
-use Moose 'confess', 'blessed';
+use Moose;
+use Carp 'confess';
+use Scalar::Util 'blessed';
 use Moose::Util::TypeConstraints 'find_type_constraint';
 use namespace::autoclean;
 
