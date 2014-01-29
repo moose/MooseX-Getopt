@@ -3,6 +3,7 @@ package MooseX::Getopt::OptionTypeMap;
 
 use Moose 'confess', 'blessed';
 use Moose::Util::TypeConstraints 'find_type_constraint';
+use namespace::autoclean;
 
 my %option_type_map = (
     'Bool'     => '!',
@@ -84,9 +85,6 @@ sub add_option_type_to_map {
 
     $option_type_map{$type_name} = $option_string;
 }
-
-no Moose::Util::TypeConstraints;
-no Moose;
 
 1;
 

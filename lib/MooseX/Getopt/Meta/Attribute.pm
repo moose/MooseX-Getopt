@@ -3,11 +3,10 @@ package MooseX::Getopt::Meta::Attribute;
 
 use Moose;
 use Moose::Util::TypeConstraints;
+use namespace::autoclean;
 
 extends 'Moose::Meta::Attribute'; # << Moose extending Moose :)
    with 'MooseX::Getopt::Meta::Attribute::Trait';
-
-no Moose;
 
 # register this as a metaclass alias ...
 package # stop confusing PAUSE

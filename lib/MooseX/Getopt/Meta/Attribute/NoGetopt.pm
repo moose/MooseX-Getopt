@@ -6,7 +6,7 @@ use Moose;
 extends 'Moose::Meta::Attribute'; # << Moose extending Moose :)
    with 'MooseX::Getopt::Meta::Attribute::Trait::NoGetopt';
 
-no Moose;
+use namespace::autoclean;
 
 # register this as a metaclass alias ...
 package # stop confusing PAUSE

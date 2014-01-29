@@ -2,6 +2,7 @@ package MooseX::Getopt::Strict;
 # ABSTRACT: only make options for attributes with the Getopt metaclass
 
 use Moose::Role;
+use namespace::autoclean;
 
 with 'MooseX::Getopt';
 
@@ -12,8 +13,6 @@ around '_compute_getopt_attrs' => sub {
         $_->does("MooseX::Getopt::Meta::Attribute::Trait")
     } $class->$next(@args);
 };
-
-no Moose::Role;
 
 1;
 

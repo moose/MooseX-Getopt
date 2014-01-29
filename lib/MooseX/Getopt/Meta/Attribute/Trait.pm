@@ -3,6 +3,7 @@ package MooseX::Getopt::Meta::Attribute::Trait;
 
 use Moose::Role;
 use Moose::Util::TypeConstraints;
+use namespace::autoclean;
 
 has 'cmd_flag' => (
     is        => 'rw',
@@ -24,9 +25,6 @@ has 'cmd_aliases' => (
     predicate => 'has_cmd_aliases',
     coerce    => 1,
 );
-
-no Moose::Util::TypeConstraints;
-no Moose::Role;
 
 # register this as a metaclass alias ...
 package # stop confusing PAUSE

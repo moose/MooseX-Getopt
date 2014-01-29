@@ -2,10 +2,9 @@ package MooseX::Getopt;
 # ABSTRACT: A Moose role for processing command line options
 
 use Moose::Role 0.56;
+use namespace::autoclean;
 
 with 'MooseX::Getopt::GLD';
-
-no Moose::Role;
 
 1;
 

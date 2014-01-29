@@ -1,14 +1,14 @@
 package MooseX::Getopt::ProcessedArgv;
-use Moose;
 # ABSTRACT: MooseX::Getopt::ProcessedArgv - Class containing the results of process_argv
+
+use Moose;
+use namespace::autoclean;
 
 has 'argv_copy'          => (is => 'ro', isa => 'ArrayRef');
 has 'extra_argv'         => (is => 'ro', isa => 'ArrayRef');
 has 'usage'              => (is => 'ro', isa => 'Maybe[Object]');
 has 'constructor_params' => (is => 'ro', isa => 'HashRef');
 has 'cli_params'         => (is => 'ro', isa => 'HashRef');
-
-no Moose;
 
 __PACKAGE__->meta->make_immutable();
 

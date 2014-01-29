@@ -2,8 +2,8 @@ package MooseX::Getopt::Dashes;
 # ABSTRACT: convert underscores in attribute names to dashes
 
 use Moose::Role;
-
 with 'MooseX::Getopt';
+use namespace::autoclean;
 
 around _get_cmd_flags_for_attr => sub {
     my $next = shift;
@@ -16,8 +16,6 @@ around _get_cmd_flags_for_attr => sub {
 
     return ( $flag, @aliases );
 };
-
-no Moose::Role;
 
 1;
 

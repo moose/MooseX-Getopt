@@ -11,6 +11,7 @@ use Try::Tiny;
 use Carp ();
 
 use Getopt::Long 2.37 ();
+use namespace::autoclean;
 
 has ARGV       => (is => 'rw', isa => 'ArrayRef', traits => ['NoGetopt']);
 has extra_argv => (is => 'rw', isa => 'ArrayRef', traits => ['NoGetopt']);
@@ -265,7 +266,6 @@ sub _attrs_to_options {
     return @options;
 }
 
-no Moose::Role;
 1;
 
 =head1 SYNOPSIS
