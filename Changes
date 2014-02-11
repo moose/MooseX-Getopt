@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+ - fix potentially-broken check-breaks test when a conflicting module fails to
+   compile
 
 0.60      2014-02-10 02:21:05Z
  - avoid failing an optional test when YAML is not installed
