@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.61      2014-02-11 06:30:14Z
  - fix potentially-broken check-breaks test when a conflicting module fails to
    compile
 
