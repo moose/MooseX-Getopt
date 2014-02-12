@@ -61,7 +61,7 @@ cmp_deeply(
     \@warnings,
     [ re(qr/^Specified configfile \'this_value_unimportant\' does not exist, is empty, or is not readable$/) ],
     'Our dummy config file doesn\'t exist',
-);
+) or diag join "\n", @warnings;
 
 ok(!$fail_on_exit, 'getoptions() lives');
 
