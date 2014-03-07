@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.62      2014-03-07 05:44:01Z
  - fix test that assumes option parsing is case-insensitive, which is no
    longer true with Getopt::Long::Descriptive 0.097
 
