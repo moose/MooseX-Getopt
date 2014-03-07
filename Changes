@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+ - fix test that assumes option parsing is case-insensitive, which is no
+   longer true with Getopt::Long::Descriptive 0.097
 
 0.61      2014-02-11 06:30:14Z
  - fix potentially-broken check-breaks test when a conflicting module fails to
