@@ -4,7 +4,7 @@ MooseX::Getopt - A Moose role for processing command line options
 
 # VERSION
 
-version 0.62
+version 0.63
 
 # SYNOPSIS
 

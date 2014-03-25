@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.63      2014-03-25 16:37:58Z
  - fix test prereq on Test::Warnings (thanks, omega!)
 
 0.62      2014-03-07 05:44:01Z
