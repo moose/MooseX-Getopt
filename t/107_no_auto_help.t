@@ -15,7 +15,7 @@ use Test::Requires { 'MooseX::SimpleConfig' => 0.07 };  # skip all if not instal
 use Test::More;
 use Test::Deep;
 use Test::Fatal 0.003;
-use Test::Warnings qw(:no_end_test :all);
+use Test::Warnings 0.009 qw(:no_end_test :all);
 
 my $fail_on_exit = 1;
 {

@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+ - fix test prereq on Test::Warnings (thanks, omega!)
 
 0.62      2014-03-07 05:44:01Z
  - fix test that assumes option parsing is case-insensitive, which is no
