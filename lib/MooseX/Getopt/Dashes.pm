@@ -45,7 +45,7 @@ around _get_cmd_flags_for_attr => sub {
 
 =head1 DESCRIPTION
 
-This is a version of C<MooseX::Getopt> which converts underscores in
+This is a version of L<MooseX::Getopt> which converts underscores in
 attribute names to dashes when generating command line flags.
 
 You can selectively disable this on a per-attribute basis by supplying
