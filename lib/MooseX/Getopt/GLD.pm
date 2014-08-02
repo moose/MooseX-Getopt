@@ -4,7 +4,7 @@ package MooseX::Getopt::GLD;
 use strict;
 use warnings;
 use MooseX::Role::Parameterized;
-use Getopt::Long::Descriptive 0.081;
+use Getopt::Long::Descriptive 0.088;
 with 'MooseX::Getopt::Basic';
 use namespace::autoclean;
 
