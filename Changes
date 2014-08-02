@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.64      2014-08-02 17:35:20Z
  - bump required version of Getopt::Long::Descriptive to avoid an infinite
    loop problem (thanks, Bram!)
 
