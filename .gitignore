@@ -1,4 +1,7 @@
+/.ackrc
 /.build/
-!.gitignore
-/MooseX-Getopt-*
+!/.gitignore
+/.latest
+/MooseX-Getopt-*/
+/MooseX-Getopt-*.tar.gz
 /todo/
