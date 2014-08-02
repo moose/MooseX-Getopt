@@ -1,5 +1,6 @@
 package MooseX::Getopt;
 # ABSTRACT: A Moose role for processing command line options
+# KEYWORDS: moose extension command line options attributes executable flags switches arguments
 
 use Moose::Role 0.56;
 use namespace::autoclean;
