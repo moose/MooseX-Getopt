@@ -28,14 +28,14 @@ use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 my $obj = MyClass->new_with_options();
 
-my $expected = <<"USAGE";
-usage: 110_sort_usage_by_attr_order.t [-?h] [long options...]
-\t-h -? --usage --help  Prints this usage information.
-\t--foo                Documentation for "foo"
-\t--bar                Documentation for "bar"
-\t--baz                Documentation for "baz"
-USAGE
-
-is($obj->usage->text, $expected, 'Usage text has nicely sorted options');
+like(
+    $obj->usage->text,
+    qr/\A\Qusage: 110_sort_usage_by_attr_order.t [-?h] [long options...]\E
+\t-h -\? --usage --help\s+Prints this usage information.
+\t--foo (STR)?\s+Documentation for "foo"
+\t--bar (STR)?\s+Documentation for "bar"
+\t--baz (STR)?\s+Documentation for "baz"\Z/,
+    'Usage text has nicely sorted options',
+);
 
 done_testing;

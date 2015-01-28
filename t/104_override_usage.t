@@ -15,12 +15,9 @@ use Moose::Util 'find_meta';
     has foo => ( isa => 'Int', is => 'ro', documentation => 'A foo' );
 }
 
-# FIXME - it looks like we have a spacing issue in Getopt::Long?
-my $usage = <<USAGE;
-usage: 104_override_usage.t [-?h] [long options...]
-\t-h -? --usage --help  Prints this usage information.
-\t--foo                A foo
-USAGE
+my $usage = qr/^\Qusage: 104_override_usage.t [-?h] [long options...]\E
+\t-h -\? --usage --help\s+Prints this usage information\.
+\t--foo (INT)?\s+A foo$/m;
 
 {
     local @ARGV = ('--foo', '1');
@@ -32,13 +29,13 @@ USAGE
 {
     local @ARGV = ('--help');
     trap { MyScript->new_with_options };
-    is($trap->stdout, $usage, 'usage is printed on --help');
+    like($trap->stdout, qr/\A$usage\Z/, 'usage is printed on --help');
 }
 
 {
     local @ARGV = ('-q'); # Does not exist
     trap { MyScript->new_with_options };
-    is($trap->die, join("\n", 'Unknown option: q', $usage), 'usage is printed on unknown option');
+    like($trap->die, qr/\AUnknown option: q\n$usage\Z/, 'usage is printed on unknown option');
 }
 
 {
@@ -50,9 +47,9 @@ USAGE
 
     local @ARGV = ('--help');
     trap { MyScript->new_with_options };
-    is(
+    like(
         $trap->stdout,
-        join("\n", '--- DOCUMENTATION ---', $usage),
+        qr/^--- DOCUMENTATION ---\n$usage\Z/,
         'additional text included before normal usage string',
     );
 }
@@ -77,9 +74,9 @@ USAGE
 
     local @ARGV = ('--help');
     trap { MyScript2->new_with_options };
-    is(
+    like(
         $trap->stdout,
-        join("\n", '--- DOCUMENTATION ---', $usage),
+        qr/^--- DOCUMENTATION ---\n$usage/,
         'additional text included before normal usage string',
     );
 }

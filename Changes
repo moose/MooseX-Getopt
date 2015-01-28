@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+ - fix tests for formatting changes in Getopt::Long::Descriptive 0.099
+   (RT#101724)
 
 0.65      2014-08-06 06:09:04Z
  - re-release to remove README.pod from shipped dist

@@ -52,7 +52,7 @@ my $fail_on_exit = 1;
 my @warnings = warnings {
     like(
         exception { Class->new_with_options },
-        qr/^usage: [\d\w]+.+\Q[long options...]\E\n.*--usage --help  Prints this usage information/ms,
+        qr/^usage: [\d\w]+.+\Q[long options...]\E\n.*--usage --help\s+Prints this usage information/ms,
         'usage information looks good',
     );
 };
