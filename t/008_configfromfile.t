@@ -1,5 +1,5 @@
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 
 # blech! but Test::Requires does a stringy eval, so this works...
 use Test::Requires { 'MooseX::ConfigFromFile' => '()' };

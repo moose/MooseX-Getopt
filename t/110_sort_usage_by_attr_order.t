@@ -9,13 +9,13 @@
 # options added by this class.
 
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 use Test::More;
 use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 {
     package MyClass;
-    use strict; use warnings FATAL => 'all';
+    use strict; use warnings;
     use Moose;
     with 'MooseX::Getopt';
 

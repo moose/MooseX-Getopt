@@ -17,14 +17,14 @@
 # Update: since 0.41, usage info is printed to stdout, not stderr.
 
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 use Test::More;
 use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Test::Trap;
 
 {
     package MyClass;
-    use strict; use warnings FATAL => 'all';
+    use strict; use warnings;
     use Moose;
     with 'MooseX::Getopt';
 }
