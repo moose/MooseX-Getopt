@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+ - remove argv from passed-through buildargs if no argv attribute exists, to
+   mollify MooseX::StrictConstructor (RT#101938, Jose Luis Martinez)
 
 0.66      2015-01-28 02:05:54Z
  - fix tests for formatting changes in Getopt::Long::Descriptive 0.099
