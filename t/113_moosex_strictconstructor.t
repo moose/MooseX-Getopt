@@ -4,6 +4,7 @@ use warnings;
 use Test::Requires { 'MooseX::StrictConstructor' => '()' };
 use Test::More;
 use Test::Fatal;
+use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
 {
     package Test1;
