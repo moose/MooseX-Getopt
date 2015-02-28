@@ -1,6 +1,6 @@
 package MooseX::Getopt::Dashes;
 # ABSTRACT: convert underscores in attribute names to dashes
-
+our $VERSION = '0.68';
 use Moose::Role;
 with 'MooseX::Getopt';
 use namespace::autoclean;
