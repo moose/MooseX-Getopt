@@ -100,7 +100,7 @@ sub new_with_options {
     my $pa = $class->process_argv(@params);
 
     # $pa->constructor_params contains everything passed to new_with_options,
-    # so it may contain the "argv" key, which $class
+    # so it may contain the "argv" key, which may not exist on the class
     my %constructor_params = %{ $pa->constructor_params };
     delete $constructor_params{argv} if (not $class->meta->find_attribute_by_name('argv'));
 
