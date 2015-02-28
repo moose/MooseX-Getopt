@@ -6,7 +6,8 @@ use Test::More;
 use Test::Fatal qw/lives_ok/;
 use Test::Requires 'MooseX::StrictConstructor';    # skip all if not installed
 
-package Test1 {
+{
+ package Test1;
  use Moose;
  with 'MooseX::Getopt';
  use MooseX::StrictConstructor;
@@ -21,8 +22,8 @@ lives_ok {
 
 cmp_ok($o1->att1, 'eq', 'value1', 'att1 gets initialized correctly');
 
-
-package Test2 {
+{
+ package Test2;
  use Moose;
  with 'MooseX::Getopt';
  use MooseX::StrictConstructor;
