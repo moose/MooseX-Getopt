@@ -99,11 +99,16 @@ sub new_with_options {
 
     my $pa = $class->process_argv(@params);
 
+    # $pa->constructor_params contains everything passed to new_with_options,
+    # so it may contain the "argv" key, which $class 
+    my %constructor_params = %{ $pa->constructor_params };
+    delete $constructor_params{argv} if (not $class->meta->find_attribute_by_name('argv'));
+
     $class->new(
         ARGV       => $pa->argv_copy,
         extra_argv => $pa->extra_argv,
         ( $pa->usage ? ( usage => $pa->usage ) : () ),
-        %{ $pa->constructor_params }, # explicit params to ->new
+        %constructor_params,  # explicit params to ->new
         %{ $pa->cli_params }, # params from CLI
     );
 }
