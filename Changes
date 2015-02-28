@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.67      2015-02-28 04:37:19Z
  - remove argv from passed-through buildargs if no argv attribute exists, to
    mollify MooseX::StrictConstructor (RT#101938, Jose Luis Martinez)
 
