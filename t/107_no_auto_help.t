@@ -11,7 +11,8 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::Requires { 'MooseX::SimpleConfig' => 0.07 };  # skip all if not installed
+# blech! but Test::Requires does a stringy eval, so this works...
+use Test::Requires { 'MooseX::ConfigFromFile' => '0.07 ()' };
 use Test::More;
 use Test::Deep;
 use Test::Fatal 0.003;

@@ -1,7 +1,8 @@
 use strict;
 use warnings FATAL => 'all';
 
-use Test::Requires 'MooseX::ConfigFromFile';    # skip all if not installed
+# blech! but Test::Requires does a stringy eval, so this works...
+use Test::Requires { 'MooseX::ConfigFromFile' => '()' };
 use Test::More;
 use Test::Fatal;
 use Test::Deep '!blessed';

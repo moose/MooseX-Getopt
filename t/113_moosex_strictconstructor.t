@@ -1,8 +1,9 @@
 use strict;
 use warnings;
+
+use Test::Requires { 'MooseX::StrictConstructor' => '()' };
 use Test::More;
 use Test::Fatal;
-use Test::Requires 'MooseX::StrictConstructor';    # skip all if not installed
 
 {
     package Test1;

@@ -4,6 +4,10 @@ use warnings FATAL => 'all';
 # respect the configfile value passed into the constructor.
 
 use Test::Requires 'MooseX::SimpleConfig', 'YAML';  # skip all if not installed
+use Test::Requires {
+    'MooseX::ConfigFromFile' => '()',
+    'YAML' => 0,
+};
 use Test::More;
 use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Path::Tiny 0.009;
