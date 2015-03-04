@@ -3,9 +3,8 @@ use warnings;
 
 # respect the configfile value passed into the constructor.
 
-use Test::Requires 'MooseX::SimpleConfig', 'YAML';  # skip all if not installed
 use Test::Requires {
-    'MooseX::ConfigFromFile' => '()',
+    'MooseX::SimpleConfig' => '()',
     'YAML' => 0,
 };
 use Test::More;
