@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.68      2015-03-04 18:16:30Z
  - fix tests that look for the wrong prereqs (0.67)
 
 0.67      2015-02-28 04:37:19Z
