@@ -1,7 +1,7 @@
 package MooseX::Getopt::Strict;
 # ABSTRACT: only make options for attributes with the Getopt metaclass
 
-our $VERSION = '0.68';
+our $VERSION = '0.69';
 
 use Moose::Role;
 use namespace::autoclean;
