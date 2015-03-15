@@ -5,7 +5,7 @@ our $VERSION = '0.69';
 
 use strict;
 use warnings;
-use MooseX::Role::Parameterized;
+use MooseX::Role::Parameterized 1.01;
 use Getopt::Long::Descriptive 0.088;
 with 'MooseX::Getopt::Basic';
 use namespace::autoclean;
