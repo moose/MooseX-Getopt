@@ -45,7 +45,7 @@ objects using parameters passed in from the command line.
 This module attempts to DWIM as much as possible with the command line
 parameters by introspecting your class's attributes. It will use the name
 of your attribute as the command line option, and if there is a type
-constraint defined, it will configure Getopt::Long to handle the option
+constraint defined, it will configure L<Getopt::Long> to handle the option
 accordingly.
 
 You can use the trait L<MooseX::Getopt::Meta::Attribute::Trait> or the
@@ -67,7 +67,7 @@ to have the leading underscore in their name, you can do this:
   # or for read-only attributes
   has '_bar' => (reader => 'bar', ...);
 
-This will mean that Getopt will not handle a --foo parameter, but your
+This will mean that MooseX::Getopt will not handle a --foo parameter, but your
 code can still call the C<foo> method.
 
 =for stopwords configfile
@@ -89,11 +89,11 @@ overrides explicit new_with_options parameters.
 =item I<Bool>
 
 A I<Bool> type constraint is set up as a boolean option with
-Getopt::Long. So that this attribute description:
+L<Getopt::Long>. So that this attribute description:
 
   has 'verbose' => (is => 'rw', isa => 'Bool');
 
-would translate into C<verbose!> as a Getopt::Long option descriptor,
+would translate into C<verbose!> as a L<Getopt::Long> option descriptor,
 which would enable the following command line options:
 
   % my_script.pl --verbose
@@ -104,12 +104,12 @@ which would enable the following command line options:
 =item I<Int>, I<Float>, I<Str>
 
 These type constraints are set up as properly typed options with
-Getopt::Long, using the C<=i>, C<=f> and C<=s> modifiers as appropriate.
+L<Getopt::Long>, using the C<=i>, C<=f> and C<=s> modifiers as appropriate.
 
 =item I<ArrayRef>
 
 An I<ArrayRef> type constraint is set up as a multiple value option
-in Getopt::Long. So that this attribute description:
+in L<Getopt::Long>. So that this attribute description:
 
   has 'include' => (
       is      => 'rw',
@@ -117,7 +117,7 @@ in Getopt::Long. So that this attribute description:
       default => sub { [] }
   );
 
-would translate into C<includes=s@> as a Getopt::Long option descriptor,
+would translate into C<includes=s@> as a L<Getopt::Long> option descriptor,
 which would enable the following command line options:
 
   % my_script.pl --include /usr/lib --include /usr/local/lib
@@ -125,7 +125,7 @@ which would enable the following command line options:
 =item I<HashRef>
 
 A I<HashRef> type constraint is set up as a hash value option
-in Getopt::Long. So that this attribute description:
+in L<Getopt::Long>. So that this attribute description:
 
   has 'define' => (
       is      => 'rw',
@@ -133,7 +133,7 @@ in Getopt::Long. So that this attribute description:
       default => sub { {} }
   );
 
-would translate into C<define=s%> as a Getopt::Long option descriptor,
+would translate into C<define=s%> as a L<Getopt::Long> option descriptor,
 which would enable the following command line options:
 
   % my_script.pl --define os=linux --define vendor=debian
@@ -174,7 +174,7 @@ Will translate to the following on the command line:
 
 This example is fairly trivial, but more complex validations are
 easily possible with a little creativity. The trick is balancing
-the type constraint validations with the Getopt::Long validations.
+the type constraint validations with the L<Getopt::Long> validations.
 
 Better examples are certainly welcome :)
 
@@ -231,8 +231,9 @@ L<Getopt::Long> did not parse.  Note that the real C<@ARGV> is left
 untouched.
 
 B<Important>: By default, L<Getopt::Long> will reject unrecognized I<options>
-(that is, options that do not correspond with attributes using the Getopt
-trait). To disable this, and allow options to also be saved in C<extra_argv> (for example to pass along to another class's C<new_with_options>), you can either enable the
+(that is, options that do not correspond with attributes using the C<Getopt>
+trait). To disable this, and allow options to also be saved in C<extra_argv>
+(for example to pass along to another class's C<new_with_options>), you can either enable the
 C<pass_through> option of L<Getopt::Long> for your class:  C<< use Getopt::Long
 qw(:config pass_through); >> or specify a value for L<MooseX::Getopt::GLD>'s C<getopt_conf> parameter.
 
