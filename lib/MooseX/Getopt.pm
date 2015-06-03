@@ -275,6 +275,11 @@ See L<Getopt::Long/Configuring Getopt::Long> for many other customizations you
 can make to how options are parsed. Simply C<use Getopt::Long qw(:config
 other_options...)> in your class to set these.
 
+Note in particular that the default setting for case sensitivity has changed
+over time in L<Getopt::Long::Descriptive>, so if you rely on a particular
+setting, you should set it explicitly, or enforce the version of
+L<Getopt::Long::Descriptive> that you install.
+
 =cut
 
 =head1 SEE ALSO
