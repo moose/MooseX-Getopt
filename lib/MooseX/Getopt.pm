@@ -250,7 +250,7 @@ options (true if any of these options were passed on the command line).
 =method C<print_usage_text>
 
 This method is called internally when the C<help_flag> state is true.
-It prints the text from the C<usage> object (see above) to C<stdout> and then the
+It prints the text from the C<usage> object (see above) to C<STDOUT> and then the
 program terminates normally.  You can apply a method modification (see
 L<Moose::Manual::MethodModifiers>) if different behaviour is desired, for
 example to include additional text.
