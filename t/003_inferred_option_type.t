@@ -17,13 +17,13 @@ BEGIN {
 
     with 'MooseX::Getopt';
 
-    subtype 'ArrayOfInts'
-        => as 'ArrayRef'
-        => where { scalar (grep { looks_like_number($_) } @$_)  };
+    my $array_of_ints = subtype
+        as 'ArrayRef',
+        where { scalar (grep { looks_like_number($_) } @$_) };
 
     has 'nums' => (
         is      => 'ro',
-        isa     => 'ArrayOfInts',
+        isa     => $array_of_ints,
         default => sub { [0] }
     );
 }

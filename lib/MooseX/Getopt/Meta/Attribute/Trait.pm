@@ -15,15 +15,15 @@ has 'cmd_flag' => (
 
 # This subtype is to support scalar -> arrayref coercion
 #  without polluting the built-in types
-subtype '_MooseX_Getopt_CmdAliases' => as 'ArrayRef';
+my $cmd_aliases = subtype as 'ArrayRef';
 
-coerce '_MooseX_Getopt_CmdAliases'
+coerce $cmd_aliases
     => from 'Str'
         => via { [$_] };
 
 has 'cmd_aliases' => (
     is        => 'rw',
-    isa       => '_MooseX_Getopt_CmdAliases',
+    isa       => $cmd_aliases,
     predicate => 'has_cmd_aliases',
     coerce    => 1,
 );
