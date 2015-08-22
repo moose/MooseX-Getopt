@@ -4,7 +4,6 @@ package MooseX::Getopt::Meta::Attribute;
 our $VERSION = '0.69';
 
 use Moose;
-use Moose::Util::TypeConstraints;
 use namespace::autoclean;
 
 extends 'Moose::Meta::Attribute'; # << Moose extending Moose :)
