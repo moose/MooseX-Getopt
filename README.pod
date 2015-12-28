@@ -322,7 +322,7 @@ Brandon L Black <blblack@gmail.com>
 
 =item *
 
-Shlomi Fish <shlomif@iglu.org.il>
+Shlomi Fish <shlomif@cpan.org>
 
 =item *
 
