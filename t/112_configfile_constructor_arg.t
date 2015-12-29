@@ -7,7 +7,7 @@ use Test::Requires {
     'MooseX::SimpleConfig' => '()',
     'YAML' => 0,
 };
-use Test::More;
+use Test::More 0.88;
 use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Path::Tiny 0.009;
 

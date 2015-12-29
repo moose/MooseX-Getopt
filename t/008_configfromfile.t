@@ -3,7 +3,7 @@ use warnings;
 
 # blech! but Test::Requires does a stringy eval, so this works...
 use Test::Requires { 'MooseX::ConfigFromFile' => '()' };
-use Test::More;
+use Test::More 0.88;
 use Test::Fatal;
 use Test::Deep '!blessed';
 use Path::Tiny 0.009;

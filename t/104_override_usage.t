@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More 0.88;
 use Test::Trap;
 use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Moose::Util 'find_meta';

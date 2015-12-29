@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use Test::Requires { 'MooseX::StrictConstructor' => '()' };
-use Test::More;
+use Test::More 0.88;
 use Test::Fatal;
 use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
