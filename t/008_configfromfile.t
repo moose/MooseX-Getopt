@@ -187,6 +187,7 @@ my %constructor_args;
         my $app = App->new_with_options;
         isa_ok( $app, 'App' );
         app_ok( $app );
+        is( $app->optional_with_init_arg, 'bar', 'attribute set via init_arg' );
     }
 
     {
