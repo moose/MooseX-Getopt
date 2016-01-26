@@ -219,7 +219,7 @@ sub _compute_getopt_attrs {
 sub _get_cmd_flags_for_attr {
     my ( $class, $attr ) = @_;
 
-    my $flag = $attr->name;
+    my $flag = $attr->init_arg;
 
     my @aliases;
 
