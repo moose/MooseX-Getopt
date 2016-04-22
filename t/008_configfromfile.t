@@ -30,6 +30,13 @@ my %constructor_args;
         required  => 0,
     );
 
+    has 'optional_with_init_arg' => (
+        is       => 'ro',
+        isa      => 'Str',
+        required => 0,
+        init_arg => 'foo',
+    );
+
     has 'required_from_config' => (
         is        => 'ro',
         isa       => 'Str',
@@ -174,12 +181,13 @@ my %constructor_args;
 
 # Config specified
 {
-    local @ARGV = qw( --configfile /notused/override --required_from_argv 1 );
+    local @ARGV = qw( --configfile /notused/override --required_from_argv 1 --foo bar);
 
     {
         my $app = App->new_with_options;
         isa_ok( $app, 'App' );
         app_ok( $app );
+        is( $app->optional_with_init_arg, 'bar', 'attribute set via init_arg' );
     }
 
     {
