@@ -1,5 +1,7 @@
 Revision history for MooseX-Getopt
 
+{{$NEXT}}
+
 0.69      2016-04-22 11:27:12Z
  - attributes' "init_arg" settings are now respected when retrieving command
    line options (thanks, Olaf Alders! -- PR#6)
