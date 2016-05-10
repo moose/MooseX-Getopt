@@ -1,7 +1,7 @@
 package MooseX::Getopt::OptionTypeMap;
 # ABSTRACT: Storage for the option to type mappings
 
-our $VERSION = '0.70';
+our $VERSION = '0.71';
 
 use Moose;
 use Carp 'confess';

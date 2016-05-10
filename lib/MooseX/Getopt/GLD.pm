@@ -1,7 +1,7 @@
 package MooseX::Getopt::GLD;
 # ABSTRACT: A Moose role for processing command line options with Getopt::Long::Descriptive
 
-our $VERSION = '0.70';
+our $VERSION = '0.71';
 
 use strict;
 use warnings;

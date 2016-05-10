@@ -2,7 +2,7 @@ package MooseX::Getopt;
 # ABSTRACT: A Moose role for processing command line options
 # KEYWORDS: moose extension command line options attributes executable flags switches arguments
 
-our $VERSION = '0.70';
+our $VERSION = '0.71';
 
 use Moose::Role 0.56;
 use namespace::autoclean;

@@ -1,7 +1,7 @@
 package MooseX::Getopt::Meta::Attribute;
 # ABSTRACT: Optional meta attribute for custom option names
 
-our $VERSION = '0.70';
+our $VERSION = '0.71';
 
 use Moose;
 use namespace::autoclean;
