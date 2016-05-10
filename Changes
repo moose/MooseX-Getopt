@@ -1,6 +1,6 @@
 Revision history for MooseX-Getopt
 
-{{$NEXT}}
+0.70      2016-05-10 20:32:32Z
  - In 0.69, an undefined init_arg would cause warnings and exception.
    Attributes with an undefined init_arg are now ignored. (thanks, Greg
    Oschwald! -- PR #7)

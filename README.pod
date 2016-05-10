@@ -8,7 +8,7 @@ MooseX::Getopt - A Moose role for processing command line options
 
 =head1 VERSION
 
-version 0.69
+version 0.70
 
 =head1 SYNOPSIS
 
@@ -302,7 +302,7 @@ Stevan Little <stevan@iinteractive.com>
 
 =head1 CONTRIBUTORS
 
-=for stopwords Karen Etheridge Tomas Doran Stevan Little Yuval Kogman Florian Ragwitz Brandon L Black Shlomi Fish Olaf Alders Hans Dieter Pearcey Nelo Onyiah Ryan D Johnson Ricardo SIGNES Ævar Arnfjörð Bjarmason Damien Krotkine Hinrik Örn Sigurðsson Todd Hepler Devin Austin Jose Luis Martinez Chris Prather Justin Hunter Stuart A Johnston Dagfinn Ilmari Mannsåker Gordon Irving Jonathan Swartz John Goulah Jesse Luehrs
+=for stopwords Karen Etheridge Tomas Doran Stevan Little Yuval Kogman Florian Ragwitz Brandon L Black Shlomi Fish Hans Dieter Pearcey Olaf Alders Nelo Onyiah Ryan D Johnson Ricardo SIGNES Damien Krotkine Dave Rolsky Hinrik Örn Sigurðsson Ævar Arnfjörð Bjarmason Chris Prather Devin Austin Jose Luis Martinez Todd Hepler Dagfinn Ilmari Mannsåker Gordon Irving Gregory Oschwald Jesse Luehrs John Goulah Jonathan Swartz Justin Hunter Stuart A Johnston
 
 =over 4
 
@@ -336,11 +336,11 @@ Shlomi Fish <shlomif@cpan.org>
 
 =item *
 
-Olaf Alders <olaf@wundersolutions.com>
+Hans Dieter Pearcey <hdp@weftsoar.net>
 
 =item *
 
-Hans Dieter Pearcey <hdp@weftsoar.net>
+Olaf Alders <olaf@wundersolutions.com>
 
 =item *
 
@@ -356,11 +356,11 @@ Ricardo SIGNES <rjbs@cpan.org>
 
 =item *
 
-Ævar Arnfjörð Bjarmason <avarab@gmail.com>
+Damien Krotkine <dkrotkine@weborama.com>
 
 =item *
 
-Damien Krotkine <dkrotkine@weborama.com>
+Dave Rolsky <autarch@urth.org>
 
 =item *
 
@@ -368,7 +368,11 @@ Hinrik Örn Sigurðsson <hinrik.sig@gmail.com>
 
 =item *
 
-Todd Hepler <thepler@employees.org>
+Ævar Arnfjörð Bjarmason <avarab@gmail.com>
+
+=item *
+
+Chris Prather <chris@prather.org>
 
 =item *
 
@@ -380,19 +384,7 @@ Jose Luis Martinez <jlmartinez@capside.com>
 
 =item *
 
-Chris Prather <chris@prather.org>
-
-=item *
-
-Shlomi Fish <shlomif@shlomifish.org>
-
-=item *
-
-Justin Hunter <justin.d.hunter@gmail.com>
-
-=item *
-
-Stuart A Johnston <saj_git@thecommune.net>
+Todd Hepler <thepler@employees.org>
 
 =item *
 
@@ -404,7 +396,11 @@ Gordon Irving <goraxe@goraxe.me.uk>
 
 =item *
 
-Jonathan Swartz <swartz@pobox.com>
+Gregory Oschwald <goschwald@maxmind.com>
+
+=item *
+
+Jesse Luehrs <doy@tozt.net>
 
 =item *
 
@@ -412,7 +408,19 @@ John Goulah <jgoulah@cpan.org>
 
 =item *
 
-Jesse Luehrs <doy@tozt.net>
+Jonathan Swartz <swartz@pobox.com>
+
+=item *
+
+Justin Hunter <justin.d.hunter@gmail.com>
+
+=item *
+
+Shlomi Fish <shlomif@shlomifish.org>
+
+=item *
+
+Stuart A Johnston <saj_git@thecommune.net>
 
 =back
 
