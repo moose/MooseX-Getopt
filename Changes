@@ -1,6 +1,9 @@
 Revision history for MooseX-Getopt
 
 {{$NEXT}}
+ - In 0.69, an undefined init_arg would cause warnings and exception.
+   Attributes with an undefined init_arg are now ignored. (thanks, Greg
+   Oschwald! -- PR #7)
 
 0.69      2016-04-22 11:27:12Z
  - attributes' "init_arg" settings are now respected when retrieving command

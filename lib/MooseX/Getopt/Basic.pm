@@ -212,6 +212,8 @@ sub _compute_getopt_attrs {
             or
         $_->name !~ /^_/
     } grep {
+        defined $_->init_arg
+    } grep {
         !$_->does('MooseX::Getopt::Meta::Attribute::Trait::NoGetopt')
     } $class->meta->get_all_attributes
 }
