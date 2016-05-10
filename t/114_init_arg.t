@@ -11,6 +11,7 @@ use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 
     has name_after => ( is => 'ro', isa => 'Str', init_arg => 'name_before' );
     has bar => ( is => 'ro', isa => 'Str', );
+    has undefined_init_arg => ( is => 'ro', isa => 'Str', init_arg => undef );
 };
 
 {
