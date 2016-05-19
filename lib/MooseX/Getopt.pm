@@ -280,9 +280,10 @@ over time in L<Getopt::Long::Descriptive>, so if you rely on a particular
 setting, you should set it explicitly, or enforce the version of
 L<Getopt::Long::Descriptive> that you install.
 
-=cut
-
 =head1 SEE ALSO
 
-L<MooseX::Getopt::Usage>, an extension to generate man pages, with colour
+=for :list
+* L<MooseX::Getopt::Usage>, an extension to generate man pages, with colour
+* L<MooX::Options>, similar functionality for L<Moo>
 
+=cut
