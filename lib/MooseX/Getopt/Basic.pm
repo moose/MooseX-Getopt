@@ -210,7 +210,7 @@ sub _compute_getopt_attrs {
     grep {
         $_->does("MooseX::Getopt::Meta::Attribute::Trait")
             or
-        $_->name !~ /^_/
+        $_->init_arg !~ /^_/
     } grep {
         defined $_->init_arg
     } grep {

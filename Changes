@@ -1,6 +1,7 @@
 Revision history for MooseX-Getopt
 
 {{$NEXT}}
+ - private attributes (i.e., lead "_) with a public init_arg now work.
 
 0.70      2016-05-10 20:32:32Z
  - In 0.69, an undefined init_arg would cause warnings and exception.
