@@ -1,7 +1,7 @@
 package MooseX::Getopt::Basic;
 # ABSTRACT: MooseX::Getopt::Basic - role to implement the Getopt::Long functionality
 
-our $VERSION = '0.71';
+our $VERSION = '0.72';
 
 use Moose::Role;
 

@@ -1,5 +1,7 @@
 Revision history for MooseX-Getopt
 
+{{$NEXT}}
+
 0.71      2016-06-19 04:08:13Z
  - private attributes (i.e., lead "_) with a public init_arg now work.
 
