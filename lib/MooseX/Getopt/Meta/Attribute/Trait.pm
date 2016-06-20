@@ -4,7 +4,7 @@ package MooseX::Getopt::Meta::Attribute::Trait;
 our $VERSION = '0.72';
 
 use Moose::Role;
-use Moose::Util::TypeConstraints;
+use Moose::Util::TypeConstraints qw(subtype coerce from via as);
 use namespace::autoclean;
 
 has 'cmd_flag' => (
