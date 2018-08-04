@@ -27,7 +27,7 @@ role {
 
     # captures the options: --help --usage --? -? -h
     has help_flag => (
-        is => 'ro', isa => 'Bool',
+        is => 'ro',
         traits => ['Getopt'],
         cmd_flag => 'help',
         cmd_aliases => [ qw(usage ? h) ],
