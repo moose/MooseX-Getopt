@@ -1,7 +1,7 @@
 package MooseX::Getopt::Meta::Attribute::Trait::NoGetopt;
 # ABSTRACT: Optional meta attribute trait for ignoring parameters
 
-our $VERSION = '0.72';
+our $VERSION = '0.73';
 
 use Moose::Role;
 use namespace::autoclean;
