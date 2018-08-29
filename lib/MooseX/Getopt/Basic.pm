@@ -254,7 +254,7 @@ sub _attrs_to_options {
             }
         }
 
-        push @options, {
+        my $push = {
             name       => $flag,
             init_arg   => $attr->init_arg,
             opt_string => $opt_string,
@@ -268,8 +268,13 @@ sub _attrs_to_options {
             # See 100_gld_default_bug.t for an example
             # - SL
             #( ( $attr->has_default && ( $attr->is_default_a_coderef xor $attr->is_lazy ) ) ? ( default => $attr->default({}) ) : () ),
-            ( $attr->has_documentation ? ( doc => $attr->documentation ) : () ),
+        };
+        if ($attr->has_documentation) {
+            my $doc = $attr->documentation;
+            $doc =~ s/[\r\n]+/ /g;
+            $push->{doc} = $doc;
         }
+        push @options, $push;
     }
 
     return @options;
