@@ -1,6 +1,8 @@
 Revision history for MooseX-Getopt
 
 {{$NEXT}}
+ - properly wrap usage text that contains newlines (Andreas Koenig, github
+   #10)
 
 0.72      2018-08-04 04:45:57Z
  - fix tests that broke with Getopt::Long::Descriptive 0.103 (RT#125992,
