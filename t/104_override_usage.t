@@ -57,6 +57,22 @@ my $usage = qr/^\Qusage: 104_override_usage.t [-?h] [long options...]\E
 }
 
 {
+    find_meta('MyScript')->add_after_method_modifier(
+        print_usage_text => sub {
+            print "--- DOCUMENTATION ---\n";
+        },
+    );
+
+    local @ARGV = ('--help');
+    trap { MyScript->new_with_options };
+    like(
+        $trap->stdout,
+        qr/$usage\n--- DOCUMENTATION ---\n/,
+        'additional text included before normal usage string',
+    );
+}
+
+{
     package MyScript2;
     use Moose;
 
