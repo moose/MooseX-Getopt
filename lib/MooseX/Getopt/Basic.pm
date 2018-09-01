@@ -85,6 +85,7 @@ sub process_argv {
     # did the user request usage information?
     if ( $processed{usage} and $params->{help_flag} ) {
         $class->print_usage_text($processed{usage});
+        exit 0;
     }
 
     return MooseX::Getopt::ProcessedArgv->new(
@@ -175,7 +176,6 @@ sub _getopt_full_usage
 {
     my ($self, $usage) = @_;
     print $usage->text;
-    exit 0;
 }
 #(this is already documented in MooseX::Getopt. But FIXME later, via RT#82195)
 =for Pod::Coverage
