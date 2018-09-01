@@ -1,5 +1,7 @@
 Revision history for MooseX-Getopt
 
+{{$NEXT}}
+
 0.73      2018-09-01 05:43:55Z
  - properly wrap usage text that contains newlines (Andreas Koenig, github
    #10)
