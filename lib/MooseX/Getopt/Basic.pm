@@ -77,7 +77,7 @@ sub process_argv {
         options => [
             $class->_attrs_to_options( $config_from_file )
         ],
-        params => $constructor_params,
+        params => $config_from_file ? { %$config_from_file, %$constructor_params } : $constructor_params,
     );
 
     my $params = $config_from_file ? { %$config_from_file, %{$processed{params}} } : $processed{params};
