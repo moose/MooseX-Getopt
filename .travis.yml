@@ -1,5 +1,3 @@
----
-sudo: false
 addons:
   apt:
     packages:
@@ -7,8 +5,9 @@ addons:
       - aspell-en
 language: perl
 perl:
-  - blead
-  - dev
+  - blead       # builds perl from git
+  - dev         # latest point release
+  - "5.28"
   - "5.26"
   - "5.24"
   - "5.22"
@@ -19,11 +18,21 @@ perl:
   - "5.12"
   - "5.10"
   - "5.8"
-matrix:
-  allow_failures:
-    - perl: blead
 env:
   global:
     - AUTHOR_TESTING=1
+    - AUTOMATED_TESTING=1
+    - RELEASE_TESTING=0
 before_install:
-  - eval $(curl https://travis-perl.github.io/init) --auto
+  - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
+  - source ~/travis-perl-helpers/init
+  - build-perl
+  - perl -V
+  - build-dist
+  - cd $BUILD_DIR
+install:
+  - cpan-install --deps
+script:
+  - perl Build.PL
+  - ./Build
+  - prove -b -r -s -j$(test-jobs) $(test-files)
