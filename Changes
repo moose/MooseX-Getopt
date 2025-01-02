@@ -1,6 +1,7 @@
 Revision history for MooseX-Getopt
 
 {{$NEXT}}
+ - Fix broken test of overriding Getopt::Long options (RT#158253)
 
 0.76      2023-12-18 20:19:14Z
  - adjust tests to deal with formatting changes in Getopt::Long::Descriptive
