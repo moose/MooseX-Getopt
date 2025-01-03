@@ -1,7 +1,7 @@
 package MooseX::Getopt::Meta::Attribute::NoGetopt;
 # ABSTRACT: Optional meta attribute for ignoring parameters
 
-our $VERSION = '0.78';
+our $VERSION = '0.79';
 
 use Moose;
 extends 'Moose::Meta::Attribute'; # << Moose extending Moose :)

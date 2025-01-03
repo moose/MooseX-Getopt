@@ -1,5 +1,7 @@
 Revision history for MooseX-Getopt
 
+{{$NEXT}}
+
 0.78      2025-01-03 17:07:02Z
  - improve author-only warning tests
 
