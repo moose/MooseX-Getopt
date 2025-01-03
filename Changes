@@ -1,6 +1,7 @@
 Revision history for MooseX-Getopt
 
 {{$NEXT}}
+ - improve author-only warning tests
 
 0.77      2025-01-03 01:19:11Z
  - Fix broken test of overriding Getopt::Long options (RT#158253)
